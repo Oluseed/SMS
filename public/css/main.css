@@ -1,0 +1,661 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", "Times New Roman";
+}
+
+
+        /*GENERAL HOMEPAGE*/
+
+
+#header{
+    border-bottom: 4px solid #fff;
+    min-height: 120px;
+    display: block;
+    margin: 0;
+    padding: 5px 0 0 10px;
+    overflow: auto;
+    background: #0c3b79;
+    color: #fff;
+}
+
+#header div img{
+    height: 110px;
+    width: 110px;
+    border-radius: 50%;
+    border: 0;
+    float: left;
+    display: inline;
+}
+
+#header h2{
+    margin: 15px 0 0 0;
+    padding: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+#header h3{
+    margin: 15px 0 0 0;
+    padding: 0;
+    text-align: center;
+}
+
+#header_nav{
+    margin-left: 40px;
+    padding: 2px;
+    float: left;
+    font-size: 1.5em;
+}
+
+#header_nav ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#header_nav ul li{
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+#header_nav ul li a{
+    color: #fff;
+}
+
+#header #header_aside{
+    margin-right: 20px;
+    float: right;
+    font-size: 1em;
+}
+
+#header_aside #motto{
+    font-family: cursive;
+    text-transform: lowercase;
+}
+
+#header_aside div{
+    margin: 0;
+    padding: 2px 5px 0 0;
+    overflow: none;
+    background: white;
+    color: #000000;
+    text-align: right;
+    font-size: 16px;
+}
+
+#body{
+    padding-top: 50px;
+    height: 100%;
+    display: block;
+    position: relative;
+    background-image: url("../imgs/back.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.intro_box{
+    margin: auto;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #8d8d8d;
+    width: 60%;
+    overflow: auto;
+    display: block;
+    justify-content: center;
+    align-self: center;
+    background: #fff;
+    color: #000000;
+}
+.intro_box p{
+    text-align: center;
+}
+.intro_box h4{
+    text-align: center;
+}
+
+
+@media(min-width: 600px){
+#nav{
+    margin: 60px auto;
+    padding: 20px 50px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #72858a;
+    width: 50%;
+    overflow: auto;
+    display: block;
+    justify-content:center;
+    position:relative;
+    align-self: center;
+    background: #7ae4ff;
+}
+
+#nav div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+#nav div .nav_box{
+    margin:15px 10%;
+    padding: 20px;
+    border: 3.5px solid #0c3b79;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #72858a;
+    width: 22%;
+    height: 180px;
+    overflow: hidden;
+    display:flex;
+    float:left;
+    background: #fff; 
+    color: #0c3b79;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    word-wrap:break-word;
+}
+}
+
+#nav div .left{
+    float: left;
+}
+#nav div .right{
+    float: right;
+}
+#nav div .nav_box:hover{
+    border: 3.5px solid #fff;
+    background: #0c3b79;
+    color: #fff;
+}
+
+#nav div .nav_box i{
+    font-size: 80px;
+}
+
+#body marquee{
+    margin-top: 10px;
+}
+
+#footer{
+    background: #35424a;
+    color: #fff;
+    padding: 2px;
+    margin: 0;
+    overflow: auto;
+    width: auto;
+    font-size: 14px;;
+}
+
+#footer ul li{
+    margin: 5px 5%;
+}
+
+#footer p{
+    text-align: center;
+    margin: 5px;
+    padding: 0;
+}
+
+.caps{
+    text-transform: uppercase;
+}
+.right{
+    float: right;
+}
+
+.button1{
+    padding: 10px;
+    margin: auto;
+    display: block;
+    border-radius: 5px;
+    background: #0c3b79;
+    color: white;
+    font-size: 16px;
+}
+
+.button2{
+    padding: 5px 10px;
+    margin: 5px;
+    float: right;
+    border-radius: 5px;
+    background: #0c3b79;
+    color: white;
+    font-size: 16px;
+}
+
+.button_null{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    display: inline;
+    color: blue;
+    font-weight: 600;
+}
+
+
+        /*LOGIN PAGE*/
+
+
+#form_1{
+    margin: 0 auto 30px auto;
+    padding: 0;
+    border-radius: 10px;
+    box-shadow: 0 0 5px #8d8d8d;
+    width:300px;
+    overflow: auto;
+    display:block;
+    align-self: center;
+    text-align: left;
+    background: #fff;
+    color: #000000;
+}
+
+.form_inner{
+    margin: auto;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #8d8d8d;
+    width: 60%;
+    overflow: auto;
+    display: block;
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+    background: #fff;
+    color: #000000;
+}
+
+#form_1 img{
+    padding: 0;
+    width: 300px;
+    height: 120px;
+    border-radius: 10px;
+    background-image: url("../imgs/images\(7\).jpg");
+}
+
+#form_1 label{
+    font-family:cursive;
+    font-size:30px;
+}
+
+#form_1 form{
+    padding:10px;
+    width:180px;
+}
+
+#form_1 form input{
+    border: 0;
+    width: 250px;
+    height: 30px;
+    border-bottom: 1px solid;
+}
+
+#form_1 form button{
+    margin: 10px auto;
+    border-radius: 5px;
+    display: block;
+    background:#0c3b79;
+    color:white;
+    width:80px;
+    height:30px;
+    cursor: pointer;
+}
+
+.form_2{
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    display: block;
+}
+
+.form_2 input{
+    margin: auto;
+    padding: 10px;
+    border: 3px inset #0c3b79;
+    border-radius: 5px;
+    width: 40%;
+    display: block;
+    align-self: center;
+}
+
+.form_3{
+    padding: 20px;
+    font-family: Monospace;
+    font-size: 16px;
+}
+
+.form_3 label{
+    color: #0c3b79;
+    font-weight: bold;
+}
+
+.form_3 input{
+    margin: 5px auto 20px auto;
+    padding: 5px;
+    border: 1px solid #b8b8b8;
+    box-shadow: 0 0 1px .5px #c6c8c8;
+    border-radius: 3px;
+    width: 100%;
+    font-size: 16px;
+}
+
+.form_3 textarea{
+    margin: 5px auto 20px auto;
+    padding: 5px;
+    border: 1px solid #b8b8b8;
+    box-shadow: 0 0 1px .5px #c6c8c8;
+    border-radius: 3px;
+    width: 100%;
+    font-size: 16px;
+}
+
+
+
+
+
+        /*SCHOOL HOMEPAGE*/
+        
+        
+#body2{
+    padding-top: 50px;
+    height: 100%;
+    display: block;
+    position: relative;
+    background-image: url("../imgs/back2.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+
+
+        /*STUDENT PORTAL*/
+
+
+
+#profile{
+    display: block;
+}
+
+#profile img{
+    margin: 3px 30px 3px 10px;
+    width: 100px;
+    height: 140px;
+    float: left;
+}
+
+#profile div{
+    display: inline;
+    font-size: 15px;
+    overflow: auto;
+    text-align: left;
+    line-height: 2;
+}
+
+#profile div label{
+    color: #0c3b79;
+    font-weight: bold;
+}
+
+
+        /*STUDENT ANNOUNCEMENT PORTAL*/
+        
+        
+.content{
+    margin: 20px 0;
+	width: auto;
+	padding: 5px 20px 30px 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.content  .content_box{
+	padding: 10px 10px 20px 10px;
+	border-radius: 5px;
+	box-shadow: -.5px -.5px .5px #939393;
+	max-width: 700px;
+	width: 700px;
+	overflow: auto;
+	display: block;
+	align-items: center;
+    background: #fff;
+}
+
+.content_box .head{
+    margin: 10px 0 30px 10px;
+    color: #0c3b79;
+    font-size: 25px;
+    
+}
+
+.content_box .head .right{
+    float: right;
+    font-size: 13px;
+    font-weight: normal;
+    color: #000000;
+}
+
+.content_box span{
+    font-family: Monospace;
+}
+
+.content_box ul{
+    margin: 0;
+    padding: 0;
+}
+
+
+.content_box ul li{
+    margin: 0;
+    padding: 10px 0;
+    border-bottom: 1.5px solid #0c3b79;
+    list-style-type: none;
+    font-family: Monospace;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.content_box table{
+    border-collapse: collapse;
+    width: 100%;
+    overflow: auto;
+    font-family: Monospace;
+}
+
+.content_box table tr:first-child{
+    color: #0c3b79;
+    font-size: 14px;
+}
+
+.content_box table tr th{
+    padding: 20px 0;
+}
+
+.content_box table tr td{
+    padding: 20px 0;
+    text-align: center;
+}
+
+.content_box table tr td:first-child{
+    color: #0c3b79;
+    font-weight: 900;
+}
+
+
+        /*TEACHER PAGES*/
+        
+        
+.content_box #ul1{
+    margin: 0;
+    padding: 0;
+}
+        
+.content_box #ul1 .day_box{
+    text-decoration: none;
+    color: #0c3b79;
+}
+        
+.content_box #ul1 .day_box li{
+    margin: 0;
+    padding: 15px 10%;
+    border-bottom: 2px solid #0c3b79;
+    list-style-type: none;
+    font-family: auto;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+#ul1 .table_box{
+    display: none;
+}
+
+#ul1 .table_box table{
+    border-color: #0c3b79;
+    border-collapse: collapse;
+    width: 100%;
+    overflow: auto;
+    font-family: Monospace;
+}
+
+#url .table_box table tr{
+    border-bottom: 1px solid #0078ff;
+}
+
+#ul1 .table_box table tr th{
+    padding: 15px 0;
+}
+
+#ul1 .table_box table tr td{
+    padding: 0;
+    text-align: center;
+}
+
+#ul1 .table_box table tr td input{
+    margin: 0;
+    padding: 5px 2px;
+    width: 95%;
+    height: 20px;
+    overflow: auto;
+    display: block;
+    text-align: center;
+    font-size: 16px;
+}
+
+
+
+
+
+
+
+@media(max-width:600px){
+    #header{
+        min-height: 50px;
+        border-bottom: 2px solid #fff;
+    }
+    #header div img{
+        height: 50px;
+        width: 50px;
+    }
+    #header h2{
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+    }
+    #header h3{
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+    }
+    
+    #header_aside{
+        padding: 2px 5px;
+        font-size: 15px;
+    }
+    
+    #body{
+        padding-top: 30px;
+    }
+    
+    .intro_box{
+        width: 75%;
+    }
+    
+    #nav{
+        margin: 30px auto;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px #72858a;
+        width: 75%;
+        overflow: auto;
+        display: block;
+        align-self: center;
+        background: #7ae4ff;
+    }
+    
+    #nav div{
+        display: block;
+    }
+    
+    #nav div .nav_box{
+        margin: 5px 0;
+        padding-top: 30px;
+        border: 2px solid #0c3b79;
+        border-radius: 5px;
+        box-shadow: 0 0 5px #72858a;
+        width: 45%;
+        height: 120px;
+        overflow: auto;
+        display: block;
+        background: #fff; 
+        color: #0c3b79;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    .nav_box:hover{
+        border: 2px solid #fff;
+    }
+    
+    #nav div .nav_box i{
+        font-size: 60px;
+    }
+    
+    
+    
+    /*STUDENTS PORTAL*/
+    
+    
+    #profile img{
+        margin: 3px 5% 3px 3px;
+        width: 60px;
+        height: 80px;
+    }
+    
+    #profile div{
+        line-height: 1;
+    }
+    
+    /*STUDENT ANNOUNCEMENT PAGE*/
+    
+    
+    .content_box table tr th{
+        padding: 10px 0;
+    }
+
+    .content_box table tr td{
+        padding: 10px 0;
+    }
+}
