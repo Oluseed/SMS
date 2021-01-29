@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class SRMSController extends Controller
 {
-    
     public function index(Request $request){
         $metadata = [
             'title' => 'HOME | SRMS',

@@ -159,7 +159,7 @@ class StudentController extends Controller
             'metadata' => $metadata,
             'model_name' => $model_name,
             'school' => session('schoolData'),
-            'user' => Auth::guard($model_name)->user()
+            'user' => Auth::guard($model_name)->user(),
         ]);
     }
 }

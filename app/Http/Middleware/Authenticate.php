@@ -30,6 +30,7 @@ class Authenticate extends Middleware
      * @param  \Closure  $next
      * @return mixed
      */
+    
     // public function handle(Request $request, Closure $next)
     // {
     //     if (/*Auth::check() && */$request->session()->has('model_name')) {
