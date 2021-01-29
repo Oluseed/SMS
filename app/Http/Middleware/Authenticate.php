@@ -22,15 +22,7 @@ class Authenticate extends Middleware
         }
     }
 
-    // protected function authenticate(Request $request, Closure $next, ...$guards)
-    // {
-    //     foreach ($guards as $guard) {
-    //         if ($this->auth->guard($guard)->check()) {
-    //             return $this->auth->shouldUse($guard);
-    //         };
-    //     }
-    // }
-
+    
     /**
      * Handle an incoming request.
      *

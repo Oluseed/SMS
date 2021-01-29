@@ -49,7 +49,7 @@ class StudentController extends Controller
             'metadata' => $metadata,
             'model_name' => $model_name,
             'school' => session('schoolData'),
-            'user' => Auth::user()
+            'user' => Auth::guard($model_name)->user()
         ]);
     }
 
@@ -71,7 +71,7 @@ class StudentController extends Controller
             'metadata' => $metadata,
             'model_name' => $model_name,
             'school' => session('schoolData'),
-            'user' => Auth::user()
+            'user' => Auth::guard($model_name)->user()
         ]);
     }
 
@@ -93,7 +93,7 @@ class StudentController extends Controller
             'metadata' => $metadata,
             'model_name' => $model_name,
             'school' => session('schoolData'),
-            'user' => Auth::user()
+            'user' => Auth::guard($model_name)->user()
         ]);
     }
 
@@ -115,7 +115,7 @@ class StudentController extends Controller
             'metadata' => $metadata,
             'model_name' => $model_name,
             'school' => session('schoolData'),
-            'user' => Auth::user()
+            'user' => Auth::guard($model_name)->user()
         ]);
     }
 
@@ -137,7 +137,7 @@ class StudentController extends Controller
             'metadata' => $metadata,
             'model_name' => $model_name,
             'school' => session('schoolData'),
-            'user' => Auth::user()
+            'user' => Auth::guard($model_name)->user()
         ]);
     }
 
@@ -159,7 +159,7 @@ class StudentController extends Controller
             'metadata' => $metadata,
             'model_name' => $model_name,
             'school' => session('schoolData'),
-            'user' => Auth::user()
+            'user' => Auth::guard($model_name)->user()
         ]);
     }
 }
