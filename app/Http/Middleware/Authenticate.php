@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Illuminate\Http\Request;
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class Authenticate extends Middleware
 {
@@ -21,10 +22,28 @@ class Authenticate extends Middleware
         }
     }
 
-    // public function handle($request, Closure $next, $model_name)
+    // protected function authenticate(Request $request, Closure $next, ...$guards)
     // {
+    //     foreach ($guards as $guard) {
+    //         if ($this->auth->guard($guard)->check()) {
+    //             return $this->auth->shouldUse($guard);
+    //         };
+    //     }
+    // }
 
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    // public function handle(Request $request, Closure $next)
+    // {
+    //     if (/*Auth::check() && */$request->session()->has('model_name')) {
+    //         $model_name = session('model_name');
 
-    //     return $next($request, $model_name);
+    //         return $next($request);
+    //     }
     // }
 }

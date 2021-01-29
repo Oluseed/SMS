@@ -28,7 +28,7 @@ Route::post('/school_portal', [SRMSController::class, 'index_schoolHomepage'])
                 ->middleware('guest');
 
 
-Route::middleware(['auth:amc_student'])->group(function () {
+Route::middleware(['auth:amc_student,anc_student'])->group(function () {
     Route::prefix('student')->group(function () {
         Route::get('/portal', [StudentController::class, 'index'])
                     ->name('student.portal');
