@@ -11,8 +11,10 @@ use Illuminate\Database\Eloquent\Model;
 class amc_student extends Authenticatable
 {
     use HasFactory, Notifiable;
+    
+    protected $connection = 'amc_srms';
 
-    protected $table = 'amc-students';
+    protected $table = 'students';
 
     /**
      * The attributes that are mass assignable.

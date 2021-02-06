@@ -6,7 +6,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Auth\AuthenticatedStudentSessionController;
 use App\Http\Controllers\Auth\AuthenticatedTeacherSessionController;
 
-/*---
+/*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -28,29 +28,30 @@ Route::post('/school_portal', [SRMSController::class, 'index_schoolHomepage'])
                 ->middleware('guest');
 
 
-Route::middleware(['auth:amc_student,anc_student'])->group(function () {
-    Route::prefix('student')->group(function () {
-        Route::get('/portal', [StudentController::class, 'index'])
-                    ->name('student.portal');
-        
-        Route::get('/announcements', [StudentController::class, 'show_announcements'])
-                    ->name('student.announcements');
+Route::prefix('student')->group(function () {
+    Route::get('/portal', [StudentController::class, 'index'])
+                ->name('student.portal');
+    
+    Route::get('/announcements', [StudentController::class, 'show_announcements'])
+                ->name('student.announcements');
 
-        Route::get('/exam_result', [StudentController::class, 'show_exam_result'])
-                    ->name('student.exam_result');
+    Route::get('/test_result', [StudentController::class, 'show_test_result'])
+                ->name('student.test_result');
 
-        Route::get('/lesson_files', [StudentController::class, 'show_lesson_files'])
-                    ->name('student.lesson_files');
+    Route::get('/exam_result', [StudentController::class, 'show_exam_result'])
+                ->name('student.exam_result');
 
-        Route::get('/question&answer', [StudentController::class, 'show_q_a'])
-                    ->name('student.q&a');
+    Route::get('/lesson_files', [StudentController::class, 'show_lesson_files'])
+                ->name('student.lesson_files');
 
-        Route::get('/question_of_the_week', [StudentController::class, 'show_queWeek'])
-                    ->name('student.queWeek');
+    Route::get('/question&answer', [StudentController::class, 'show_q_a'])
+                ->name('student.q&a');
 
-        Route::get('/timetable', [StudentController::class, 'show_timetable'])
-                ->name('student.timetable');
-    });
+    Route::get('/question_of_the_week', [StudentController::class, 'show_queWeek'])
+                ->name('student.queWeek');
+
+    Route::get('/timetable', [StudentController::class, 'show_timetable'])
+            ->name('student.timetable');
 });
 
 

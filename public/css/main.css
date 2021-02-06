@@ -206,6 +206,9 @@ body{
 .caps{
     text-transform: uppercase;
 }
+.capitalize{
+    text-transform: capitalize;
+}
 .right{
     float: right;
 }
@@ -456,7 +459,7 @@ body{
 .content_box ul li{
     margin: 0;
     padding: 10px 0;
-    border-bottom: 1.5px solid #0c3b79;
+    border-bottom: 2.5px solid #0c3b79;
     list-style-type: none;
     font-family: Monospace;
     font-size: 16px;
@@ -469,6 +472,7 @@ body{
     width: 100%;
     overflow: auto;
     font-family: Monospace;
+    text-transform: uppercase;
 }
 
 .content_box table tr:first-child{
@@ -650,7 +654,9 @@ body{
     
     /*STUDENT ANNOUNCEMENT PAGE*/
     
-    
+    .content_box ul li{
+        border-bottom: 1.5px solid #0c3b79;
+    }
     .content_box table tr th{
         padding: 10px 0;
     }

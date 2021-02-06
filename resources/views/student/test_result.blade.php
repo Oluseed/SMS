@@ -18,16 +18,15 @@
 @section('content')
                 <article class="content_box">
                     <div class="head">
-                        <i class="far fa-map" aria-hidden="true"></i><b>   Exam Results</b>
+                        <i class="far fa-table" aria-hidden="true"></i><b>  Test Results</b>
                     </div>
                     <table border="1">
                         <tr>
                             <th> S/N </th>
                             <th>Subject</th>
-                            <th>Test Score</th>
-                            <th>Exam Score</th>
-                            <th>Total</th>
-                            <th>Grade</th>
+                            <th>1<sup>st</sup>Test Score</th>
+                            <th>2<sup>nd</sup> Test Score</th>
+                            <th>Total Score</th>
                         </tr>
                         @if ($data->sub1)
                         <tr>
@@ -150,7 +149,6 @@
                         </tr>
                         @endif
                     </table>
-         
                     <button class="button2">Download
                         <i class="fas fa-download"></i>
                     </button>
@@ -168,3 +166,4 @@
                 </p>
             </div>
 @endsection
+

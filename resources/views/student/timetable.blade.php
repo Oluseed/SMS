@@ -21,71 +21,35 @@
                         <i class="fa fa-table" aria-hidden="true"></i><b> Timetable</b>
                     </div>
                     <table border="3">
+                    @foreach ($data as $row)
+                    @if ($loop->first)
                         <tr>
-                            <th>Date</th>
-                            <th>8:00-9:00AM</th>
-                            <th>9:00-10:00AM</th>
-                            <th>10:00-11:00AM</th>
-                            <th>11:00-12:00PM</th>
-                            <th>12:00-1:00PM</th>
-                            <th>1:00-2:00PM</th>
-                            <th>2:00-3:00PM</th>
+                            <th>{{ $row->day }}</th>
+                            <th>{{ $row->col1 }}</th>
+                            <th>{{ $row->col2 }}</th>
+                            <th>{{ $row->col3 }}</th>
+                            <th>{{ $row->col4 }}</th>
+                            <th>{{ $row->col5 }}</th>
+                            <th>{{ $row->col6 }}</th>
+                            <th>{{ $row->col7 }}</th>
+                            <th>{{ $row->col8 }}</th>
+                            <th>{{ $row->col9 }}</th>
                         </tr>
-                        
+                    @else
                         <tr>
-                            <td>MON</td>
-                            <td>BIO</td>
-                            <td>CHM</td>
-                            <td>MTH</td>
-                            <td>PHY</td>
-                            <td>COMP</td>
-                            <td>GOV</td>
-                            <td>EGL</td>
+                            <td>{{ $row->day }}</td>
+                            <td>{{ $row->col1 }}</td>
+                            <td>{{ $row->col2 }}</td>
+                            <td>{{ $row->col3 }}</td>
+                            <td>{{ $row->col4 }}</td>
+                            <td>{{ $row->col5 }}</td>
+                            <td>{{ $row->col6 }}</td>
+                            <td>{{ $row->col7 }}</td>
+                            <td>{{ $row->col8 }}</td>
+                            <td>{{ $row->col9 }}</td>
                         </tr>
-                        
-                        <tr>
-                            <td>TUE</td>
-                            <td>BIO</td>
-                            <td>MTH</td>
-                            <td>PHY</td>
-                            <td>COM</td>
-                            <td>ACC</td>
-                            <td>LIT</td>
-                            <td>AGR</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>WED</td>
-                            <td>YOR</td>
-                            <td>CIV</td>
-                            <td>GOV</td>
-                            <td>ACC</td>
-                            <td>CHM</td>
-                            <td>BIO</td>
-                            <td>MTH</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>THU</td>
-                            <td>EGL</td>
-                            <td>MTH</td>
-                            <td>ACC</td>
-                            <td>LIT</td>
-                            <td>CIV</td>
-                            <td>COM</td>
-                            <td>COMP</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>FRI</td>
-                            <td>PHY</td>
-                            <td>LIT</td>
-                            <td>MTH</td>
-                            <td>GOV</td>
-                            <td>GOV</td>
-                            <td>HIS</td>
-                            <td>CO</td>
-                        </tr>
+                    @endif
+                    @endforeach
                     </table>
                     <button class="button2">Download
                         <i class="fas fa-download"></i>
@@ -98,7 +62,7 @@
 
 @section('bottom_box')
             <div class="intro_box">
-                <p>{{ $model_name }}
+                <p>
                     If you have any problem with your portal, you can drop your complain or message your principal / headteacher at <a href="#" title="Contact / Complain">Contact Info</a>.
                 </p>
             </div>

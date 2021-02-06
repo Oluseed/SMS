@@ -40,22 +40,21 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
         'amc_student' => [
             'driver' => 'session',
-            'provider' => 'amc_student',
+            'provider' => 'amc_students',
         ],
 
         'anc_student' => [
             'driver' => 'session',
-            'provider' => 'anc_student',
+            'provider' => 'anc_students',
         ],
 
-        'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
-            'hash' => false,
-        ],
+        // 'api' => [
+        //     'driver' => 'token',
+        //     'provider' => 'users',
+        //     'hash' => false,
+        // ],
     ],
 
     /*
@@ -81,19 +80,12 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // if ($model_name == 'amc_student') {
-        //     '$model_name' => [
-        //         'driver' => 'eloquent',
-        //         'model' => App\Models\amc_student::class,
-        //     ],
-        // }
-
-        'amc_student' => [
+        'amc_students' => [
             'driver' => 'eloquent',
             'model' => App\Models\amc_student::class,
         ],
 
-        'anc_student' => [
+        'anc_students' => [
             'driver' => 'eloquent',
             'model' => App\Models\anc_student::class,
         ],
@@ -120,22 +112,15 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-
         'amc_student' => [
-            'provider' => 'amc_student',
+            'provider' => 'amc_students',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
         ],
 
         'anc_student' => [
-            'provider' => 'anc_student',
+            'provider' => 'anc_students',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

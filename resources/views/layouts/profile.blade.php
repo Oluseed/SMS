@@ -1,4 +1,4 @@
-<h4><span>{{ $school->school_name }}</span> Student Portal. </h4>
+<h4><span class="capitalize">{{ $school->school_name }}</span> Student Portal. </h4>
                 <div id="profile">
                     <img src="/../imgs/student.jpg" alt="Student Picture" title="Peter Parker"/>
                     <div>

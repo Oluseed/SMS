@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateSchoolsTable extends Migration
 {
@@ -13,13 +14,14 @@ class CreateSchoolsTable extends Migration
      */
     public function up()
     {
-        Schema::create('schools', function (Blueprint $table) {
+        Schema::connection('anc_srms')->create('schools', function (Blueprint $table) {
             $table->id();
             $table->string('school_name')->unique();
             $table->string('school_code')->unique();
             $table->binary('school_logo')->nullable();
             $table->string('school_motto')->nullable();
             $table->string('school_email')->nullable();
+            $table->string('school_database')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ class CreateSchoolsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('schools');
+        Schema::connection('anc_srms')->dropIfExists('schools');
     }
 }

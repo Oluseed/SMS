@@ -5,6 +5,7 @@ namespace App\Http\Requests\Auth;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -47,10 +48,11 @@ class LoginRequest extends FormRequest
 
         $school = session('schoolData');
         $school_code = $school->school_code;
-        $model_name = $school_code.'_student';
-
+        $role = session('role');
+        $model_name = $school_code.'_'.$role;
+        
         session(['model_name' => $model_name]);
-
+        
         if (! Auth::guard($model_name)->attempt($this->only('regno', 'password')/*, $this->filled('remember')*/)) {
             RateLimiter::hit($this->throttleKey());
 
@@ -87,7 +89,7 @@ class LoginRequest extends FormRequest
         ]);
     }
 
-    /**
+    /*
      * Get the rate limiting throttle key for the request.
      *
      * @return string

@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AuthenticatedStudentSessionController extends Controller
 {
@@ -41,8 +42,13 @@ class AuthenticatedStudentSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
+        session(['role' => 'student']);
+        
         $request->authenticate();
 
+        if (!$request->session()->has('schoolData')) {
+            return redirect('/select_school');
+        }
         $request->session()->regenerate();
 
         return redirect(RouteServiceProvider::HOME);
@@ -58,7 +64,8 @@ class AuthenticatedStudentSessionController extends Controller
     {
         $school = session('schoolData');
         $school_code = $school->school_code;
-        $model_name = $school_code.'_student';
+        $role = session('role');
+        $model_name = $school_code.'_'.$role;
 
         Auth::guard($model_name)->logout();
 

@@ -1,6 +1,6 @@
 @extends('layouts.schoollay')
 @section('intro_box')
-                <h4>Welcome to <span>{{ $school->school_name }}</span> Student Management System.</h4>
+                <h4>Welcome to <span class="capitalize">{{ $school->school_name }}</span> Student Management System.</h4>
                 <p>
                     You can login to your respective portal below as a student or as teacher.
                     <br/>

@@ -19,6 +19,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/student/portal';
 
+    public const SCHOOLLOGIN = '/select_school';
+
+
     /**
      * The controller namespace for the application.
      *

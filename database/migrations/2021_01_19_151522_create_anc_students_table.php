@@ -13,7 +13,7 @@ class CreateAncStudentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('anc_students', function (Blueprint $table) {
+        Schema::connection('anc_srms')->create('students', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('regno')->unique();
@@ -34,6 +34,6 @@ class CreateAncStudentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('anc_students');
+        Schema::connection('anc_srms')->dropIfExists('students');
     }
 }

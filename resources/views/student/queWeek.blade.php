@@ -67,7 +67,7 @@
 
 @section('bottom_box')
             <div class="intro_box">
-                <p>{{ $model_name }}
+                <p>
                     If you have any problem with your portal, you can drop your complain or message your principal / headteacher at <a href="#" title="Contact / Complain">Contact Info</a>.
                 </p>
             </div>

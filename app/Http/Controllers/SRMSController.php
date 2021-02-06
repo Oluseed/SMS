@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\School;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Providers\RouteServiceProvider;
 
 class SRMSController extends Controller
 {
+    
     public function index(Request $request){
         $metadata = [
             'title' => 'HOME | SRMS',
@@ -15,10 +18,8 @@ class SRMSController extends Controller
             'keywords' => 'Students, Result checker'
         ];
 
-        if (Auth::check()) {
-            $school = session('schoolData');
-            $school_code = $school->school_code;
-            $model_name = $school_code.'_student';
+        if (Auth::check() || $request->session()->exists('schoolData')) {
+            $model_name = session('model_name');
 
             Auth::guard($model_name)->logout();
 
@@ -30,12 +31,22 @@ class SRMSController extends Controller
         return view('index', ['metadata' => $metadata]);
     }
 
-    public function show_school(){
+    public function show_school(Request $request){
         $metadata = [
             'title' => 'SCHOOL LIST | SRMS',
             'description' => 'Login to or select school portal at Students Result Management System',
             'keywords' => 'Students, Result checker, Select School, Choose school, School list'
         ];
+
+        if (Auth::check() || $request->session()->exists('schoolData')) {
+            $model_name = session('model_name');
+
+            Auth::guard($model_name)->logout();
+
+            $request->session()->invalidate();
+
+            $request->session()->regenerateToken();
+        }
 
         $schools = School::all();
 
@@ -47,18 +58,28 @@ class SRMSController extends Controller
 
     public function index_schoolHomepage(Request $request){
         $metadata = [
-            'title' => 'Unique Academics | HOMEPAGE',
+            'title' => '| HOMEPAGE',
             'description' => 'Welcome to your school homepage at Students Result Management System',
             'keywords' => 'Students, Result checker, School Homepage, School index Page'
         ];
+
+        // Request input, Find schooldata, Redirect if find fails, Get School Database
         $school_name = $request->input('school_name');
-        $school = School::findOrFail($school_name);
+        $srms_school = School::find($school_name);
 
-        session(['schoolData' => $school]);
-
+        if (!$srms_school) {
+            return redirect(RouteServiceProvider::SCHOOLLOGIN);
+        }
+        
+        $school = DB::connection($srms_school->school_database)
+                        ->select('SELECT * FROM schools');
+        
+        // Set $school and School database as session variables
+        session(['schoolData' => $school[0]]);
+        
         return view('homepage', [
             'metadata' => $metadata,
-            'school' => $school
+            'school' => $school[0]
         ]);
     }
 }

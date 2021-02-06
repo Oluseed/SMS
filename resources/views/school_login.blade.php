@@ -19,7 +19,7 @@
                     <input type="text" name="school_name" list="name" required/>
                     <datalist id="name">
                     @foreach ($schools as $school)
-                        <option value="{{ $school->id }}">{{ $school->school_name }}</option>
+                        <option value="{{ $school->school_name }}">{{ $school->school_name }}</option>
                     @endforeach
                     </datalist>
                     <br>

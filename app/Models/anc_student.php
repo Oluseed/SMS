@@ -12,6 +12,10 @@ class anc_student extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $connection = 'anc_srms';
+
+    protected $table = 'students';
+
     /**
      * The attributes that are mass assignable.
      *
