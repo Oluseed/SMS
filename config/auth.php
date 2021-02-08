@@ -44,17 +44,19 @@ return [
             'driver' => 'session',
             'provider' => 'amc_students',
         ],
+        'amc_teacher' => [
+            'driver' => 'session',
+            'provider' => 'amc_teachers',
+        ],
 
         'anc_student' => [
             'driver' => 'session',
             'provider' => 'anc_students',
         ],
-
-        // 'api' => [
-        //     'driver' => 'token',
-        //     'provider' => 'users',
-        //     'hash' => false,
-        // ],
+        'anc_teacher' => [
+            'driver' => 'session',
+            'provider' => 'anc_teachers',
+        ],
     ],
 
     /*
@@ -84,10 +86,18 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\amc_student::class,
         ],
+        'amc_teachers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\amc_teacher::class,
+        ],
 
         'anc_students' => [
             'driver' => 'eloquent',
             'model' => App\Models\anc_student::class,
+        ],
+        'anc_teachers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\anc_teacher::class,
         ],
 
         // 'users' => [
@@ -118,9 +128,21 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        'amc_teacher' => [
+            'provider' => 'amc_teachers',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
 
         'anc_student' => [
             'provider' => 'anc_students',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'anc_teacher' => [
+            'provider' => 'anc_teachers',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

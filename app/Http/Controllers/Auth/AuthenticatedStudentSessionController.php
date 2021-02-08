@@ -73,6 +73,6 @@ class AuthenticatedStudentSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::STUDENTLOGIN);
     }
 }

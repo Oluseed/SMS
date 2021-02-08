@@ -19,6 +19,12 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/student/portal';
 
+    public const HOMETEACHER = '/teacher/portal';
+
+    public const STUDENTLOGIN = '/student_login';
+
+    public const TEACHERLOGIN = '/teacher_login';
+
     public const SCHOOLLOGIN = '/select_school';
 
 

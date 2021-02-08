@@ -339,6 +339,11 @@ body{
     font-weight: bold;
 }
 
+.form_3 select{
+    width: 100%;
+    height: 30px;
+}
+
 .form_3 input{
     margin: 5px auto 20px auto;
     padding: 5px;
@@ -446,9 +451,9 @@ body{
     color: #000000;
 }
 
-.content_box span{
+/* .content_box span{
     font-family: Monospace;
-}
+} */
 
 .content_box ul{
     margin: 0;
@@ -492,6 +497,44 @@ body{
 .content_box table tr td:first-child{
     color: #0c3b79;
     font-weight: 900;
+}
+
+.content .content_box .content1{
+    display: none;
+    animation: fadeEffect 3s;
+}
+
+@keyframes fadeEffect{
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.content .content_box #nav1{
+    padding: 0 0 5px 10px;
+    overflow: none;
+    display: inline;
+    color: #000000;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Times New Roman";
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.content .content_box #nav1 .tablink{
+    padding: 3px 5px;
+    display: inline-block;
+}
+
+.content1{
+    margin-top: 20px;
+    overflow: none;
+}
+
+.current{
+    color: #0c3b79;
+    font-size: 25px;
+    text-decoration: underline;
 }
 
 

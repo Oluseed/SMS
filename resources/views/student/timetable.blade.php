@@ -21,6 +21,7 @@
                         <i class="fa fa-table" aria-hidden="true"></i><b> Timetable</b>
                     </div>
                     <table border="3">
+                    @if ($data != '')
                     @foreach ($data as $row)
                     @if ($loop->first)
                         <tr>
@@ -50,6 +51,11 @@
                         </tr>
                     @endif
                     @endforeach
+                    @else
+                        <tr>
+                            <td colspan="10" style="color:red;" class="capitalize">This table has not been posted yet!!!</td>
+                        </tr>
+                    @endif
                     </table>
                     <button class="button2">Download
                         <i class="fas fa-download"></i>

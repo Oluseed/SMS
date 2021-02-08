@@ -41,14 +41,18 @@ Route::prefix('student')->group(function () {
     Route::get('/exam_result', [StudentController::class, 'show_exam_result'])
                 ->name('student.exam_result');
 
+    Route::get('/question_of_the_week', [StudentController::class, 'show_queWeek'])
+                ->name('student.queWeek');
+
+    Route::post('/question_of_the_week', [StudentController::class, 'store_queWeek']);
+
     Route::get('/lesson_files', [StudentController::class, 'show_lesson_files'])
                 ->name('student.lesson_files');
 
-    Route::get('/question&answer', [StudentController::class, 'show_q_a'])
-                ->name('student.q&a');
+    Route::get('/messages', [StudentController::class, 'show_message'])
+                ->name('student.message');
 
-    Route::get('/question_of_the_week', [StudentController::class, 'show_queWeek'])
-                ->name('student.queWeek');
+    Route::post('/messages', [StudentController::class, 'store_message']);
 
     Route::get('/timetable', [StudentController::class, 'show_timetable'])
             ->name('student.timetable');

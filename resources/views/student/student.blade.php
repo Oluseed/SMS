@@ -53,17 +53,17 @@
                         <br/>
                         <span>LESSON FILES</span>
                     </a>
-                    <a href="#" class="nav_box left">
+                    <a href="{{ route('student.message') }}" class="nav_box left">
                         <i class="fas fa-comment-dots" aria-hidden="true"></i>
                         <br/>
                         <br/>
                         <span>MESSAGE BOX</span>
                     </a>
-                    <a href="{{ route('student.q&a') }}" class="nav_box right">
-                        <i class="far fa-comments" aria-hidden="true"></i>
+                    <a href="#" class="nav_box right">
+                        <i class="fas fa-user-cog"></i>
                         <br/>
                         <br/>
-                        <span>Q & A</span>
+                        <span>ACCOUNT SETTINGS</span>
                     </a>
                 </div>
 @endsection

@@ -17,6 +17,7 @@
 
 @section('content')
                 <article class="content_box">
+                    @if ($data != '')
                     <div class="head">
                         <i class="fas fa-bullhorn" aria-hidden="true"></i><b>   Announcements</b>
                     </div>
@@ -26,6 +27,16 @@
                         <li>{{ $row->story }}</li>
                     @endforeach
                     </ul>
+                    @else
+                    <div class="head">
+                        <span style="color:red;" class="capitalize">No Announcement Posted yet.</span>
+                        <br>
+                        <br>
+                        <form action="{{ route('student.portal') }}" method="get">
+                            <button type="submit" class="button2" style="background:green">&larr; Go Back</button>
+                        </form>
+                    </div>
+                    @endif
                 </article>
 @endsection
 

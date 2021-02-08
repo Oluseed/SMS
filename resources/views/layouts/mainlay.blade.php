@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="css/main.css"/>
         <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
         <script src="https://kit.fontawesome.com/06a287e153.js" crossorigin="anonymous"></script>
-        <script src="srms.js"></script>
+        <script src="{{ asset('js/srms.js') }}"></script>
     </head>
 
     <body>

@@ -20,13 +20,37 @@
                     <div class="head">
                         <i class="fas fa-folder-open" aria-hidden="true"></i><b>   LESSON FILES</b>
                     </div>
-                    
-                    <h3>Nomenclature of Organic Compounds</h3>
-          
-                    <a href="#">
-                        <img src="../imgs/download.jpeg" alt="Student Picture" title="Peter Parker" width="100%"/>
-                    </a>
+                    <nav id="nav1">
+						<span class="tablink current" onclick="openWave(event, 'files');">
+							<span>All Files</span>
+						</span>
+						<span class="tablink" onclick="openWave(event, 'pictures');">
+							<span>Pictures</span>
+						</span>
+						<span class="tablink" onclick="openWave(event, 'videos');">
+							<span>Videos</span>
+						</span>
+				    </nav>
+				    
+				    <section id="files" class="content1" style="display: block;">
+                        <img src="{{ asset('/../imgs/download.jpeg') }}" alt="Student Picture" title="Peter Parker" width="100%"/>
+                        <img src="{{ asset('/../imgs/download.jpeg') }}" alt="Student Picture" title="Peter Parker" width="100%"/>
+                        <img src="{{ asset('/../imgs/download.jpeg') }}" alt="Student Picture" title="Peter Parker" width="100%"/>
+				    </section>
+				    
+				    <section id="pictures" class="content1">
+				        <img src="{{ asset('/../imgs/images.jpg') }}" alt="Student Picture" title="Peter Parker" width="100%"/>
+				        <img src="{{ asset('/../imgs/images.jpg') }}" alt="Student Picture" title="Peter Parker" width="100%"/>
+				        <img src="{{ asset('/../imgs/images.jpg') }}" alt="Student Picture" title="Peter Parker" width="100%"/>
+				    </section>
+				    
+				    <section id="videos" class="content1">
+                        <img src="{{ asset('/../imgs/logo.jpg') }}" alt="Student Picture" title="Peter Parker" width="100%"/>
+                        <img src="{{ asset('/../imgs/logo.jpg') }}" alt="Student Picture" title="Peter Parker" width="100%"/>
+                        <img src="{{ asset('/../imgs/logo.jpg') }}" alt="Student Picture" title="Peter Parker" width="100%"/>
+				    </section>
                 </article>
+                <script src="{{ asset('/../js/srms.js') }}">openWave();</script>
 @endsection
 
 @section('bottom_box')

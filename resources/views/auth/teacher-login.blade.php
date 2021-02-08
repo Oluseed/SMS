@@ -12,29 +12,29 @@
                     </div>
                 @endif
 
-                <!-- Validation Errors -->
-                {{-- @props(['errors']) --}}
 
-                @if ($errors->any())
-                    <div>
-                        <div class="font-medium text-red-600">
-                            {{ __('Whoops! Something went wrong.') }}
-                        </div>
-
-                        <ul class="mt-3 list-disc list-inside text-sm text-red-600">
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-
-                <img src="imgs/images(7).jpg" alt="Teachers Poster"/>
-                <form method="POST" action="{{ route('login') }}">
+                <img src="imgs/images(7).jpg" alt="Teachers Poster" title="Teachers Poster"/>
+                <form method="POST" action="{{ url('/teacher_login') }}">
                     @csrf
+                    <!-- Validation Errors -->
+                    {{-- @props(['errors']) --}}
+
+                    @if ($errors->any())
+                        <div>
+                            <div style="color:red;">
+                                {{ __('Whoops! Something went wrong.') }}
+                            </div>
+
+                            <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <label for="teacher_id">Teacher ID</label>
                     <br/>
-                    <input type="text" name="teacher_id" placeholder="UQE/SCI/999" required autofocus/>
+                    <input type="text" name="regno" placeholder="UQE/ART/999" required autofocus/>
                     <br/>
                     <br/>
                     <label for="password">Password</label>
@@ -50,6 +50,6 @@
                         @endif
                     </div>
                     <br/>
-                    <button type="submit">Login</button>
+                    <button type="submit">Login <i class="far fa-paper-plane"></i></button>
           		</form>
 @endsection

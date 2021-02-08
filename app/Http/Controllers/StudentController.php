@@ -66,12 +66,18 @@ class StudentController extends Controller
         $data = DB::connection($school->school_database)
                         ->select('SELECT * FROM announcements ORDER BY created_at DESC');
 
+        if ($data != []) {
+            $datas = $data;
+        } else {
+            $datas = '';
+        }
+
         // Return view with datas
         return view('student.announcement', [
             'metadata' => $metadata,
             'school' => session('schoolData'),
             'user' => Auth::guard($model_name)->user(),
-            'data' => $data
+            'data' => $datas
         ]);
     }
 
@@ -91,15 +97,21 @@ class StudentController extends Controller
 
         // Get page data content from database
         $school = session('schoolData');
+        $user = Auth::guard($model_name)->user();
         $data = DB::connection($school->school_database)
-                        ->select('SELECT * FROM timetables');
+                        ->select('SELECT * FROM timetables WHERE class = ?', [$user->class]);
 
+        if ($data != []) {
+            $datas = $data;
+        } else {
+            $datas = '';
+        }
         // Return view with datas
         return view('student.timetable', [
             'metadata' => $metadata,
             'school' => session('schoolData'),
-            'user' => Auth::guard($model_name)->user(),
-            'data' => $data
+            'user' => $user,
+            'data' => $datas
         ]);
     }
 
@@ -123,12 +135,17 @@ class StudentController extends Controller
         $data = DB::connection($school->school_database)
                         ->select('SELECT * FROM test_results WHERE student_id = '.$user->id);
         
+        if ($data != []) {
+            $datas = $data[0];
+        } else {
+            $datas = '';
+        }
         // Return view with datas
         return view('student.test_result', [
             'metadata' => $metadata,
             'school' => session('schoolData'),
             'user' => Auth::guard($model_name)->user(),
-            'data' => $data[0]
+            'data' => $datas
         ]);
     }
 
@@ -152,13 +169,81 @@ class StudentController extends Controller
         $data = DB::connection($school->school_database)
                         ->select('SELECT * FROM exam_results WHERE student_id = '.$user->id);
         
+        if ($data != []) {
+            $datas = $data[0];
+        } else {
+            $datas = '';
+        }
         // Return view with datas
-        return view('student.test_result', [
+        return view('student.exam_result', [
             'metadata' => $metadata,
             'school' => session('schoolData'),
             'user' => Auth::guard($model_name)->user(),
-            'data' => $data[0]
+            'data' => $datas
         ]);
+    }
+    
+    public function show_queWeek(Request $request){
+        $metadata = [
+            'title' => '| STUDENT PORTAL',
+            'description' => 'Check question of the week on your student portal at Students Result Management System',
+            'keywords' => 'Student, Result checker, Student portal, Student data, Student activities, Question of the week',
+            'body_pics' => 'body2'
+        ];
+        // Redirect if session schooldata isset
+        if (!$request->session()->has('schoolData')) {
+            return redirect('/select_school');
+        }
+        // Get model_name
+        $model_name = session('model_name');
+
+        // Get page data content from database
+        $school = session('schoolData');
+        $user = Auth::guard($model_name)->user();
+        $data = DB::connection($school->school_database)
+                        ->select('SELECT * FROM queweek_show WHERE class = ?', [$user->class]);
+        
+        if ($data != []) {
+            $datas = $data;
+        } else {
+            $datas = '';
+        }
+        // Return view with datas
+        return view('student.queWeek', [
+            'metadata' => $metadata,
+            'school' => session('schoolData'),
+            'user' => $user,
+            'data' => $datas
+        ]);
+    }
+
+    public function store_queWeek(Request $request){
+
+        // Redirect if session schooldata isset
+        if (!$request->session()->has('schoolData')) {
+            return redirect('/select_school');
+        }
+        // Get model_name
+        $model_name = session('model_name');
+
+        // Get page data content from database
+        $school = session('schoolData');
+        $user = Auth::guard($model_name)->user();
+
+        $question_id = $request->input('question_id');
+        $data = DB::connection($school->school_database)
+                        ->select('SELECT * FROM queweek_show WHERE id = ?', [$question_id]);
+        
+        // Get Data And Insert
+        $subject = $data[0]->subject;
+        $teacher_id = $data[0]->teacher_id;
+        $student_id = $user->id;
+        $answer = $request->input('answer');
+
+        DB::connection($school->school_database)
+                        ->insert('INSERT INTO queweek_post (subject, teacher_id, student_id, answer) VALUES (?, ?, ?, ?)', [$subject, $teacher_id, $student_id, $answer]);
+        // Redirect
+        return redirect(route('student.queWeek'));
     }
 
     public function show_lesson_files(Request $request){
@@ -189,7 +274,7 @@ class StudentController extends Controller
         ]);
     }
 
-    public function show_q_a(Request $request){
+    public function show_message(Request $request){
         $metadata = [
             'title' => '| STUDENT PORTAL',
             'description' => 'Send a question and recieve answers on your student portal at Students Result Management System',
@@ -205,25 +290,26 @@ class StudentController extends Controller
 
         // Get page data content from database
         $school = session('schoolData');
+        $user = Auth::guard($model_name)->user();
         $data = DB::connection($school->school_database)
-                        ->select('SELECT * FROM announcements');
-
+                        ->select('SELECT * FROM teacher_messages WHERE student_id = ?', [$user->id]);
+        
+        if ($data != []) {
+            $datas = $data;
+        } else {
+            $datas = '';
+        }
         // Return view with datas
-        return view('student.q&a', [
+        return view('student.message', [
             'metadata' => $metadata,
             'school' => session('schoolData'),
-            'user' => Auth::guard($model_name)->user(),
-            'data' => $data
+            'user' => $user,
+            'data' => $datas
         ]);
     }
 
-    public function show_queWeek(Request $request){
-        $metadata = [
-            'title' => '| STUDENT PORTAL',
-            'description' => 'Check question of the week on your student portal at Students Result Management System',
-            'keywords' => 'Student, Result checker, Student portal, Student data, Student activities, Question of the week',
-            'body_pics' => 'body2'
-        ];
+    public function store_message(Request $request){
+        
         // Redirect if session schooldata isset
         if (!$request->session()->has('schoolData')) {
             return redirect('/select_school');
@@ -233,15 +319,19 @@ class StudentController extends Controller
 
         // Get page data content from database
         $school = session('schoolData');
-        $data = DB::connection($school->school_database)
-                        ->select('SELECT * FROM announcements');
+        $user = Auth::guard($model_name)->user();
+        
+        // Get Data And Insert
+        $student_id = $user->id;
+        $class = $user->class;
+        $recipient = $request->input('recipient');
+        $title = $request->input('title');
+        $message = $request->input('message');
 
-        // Return view with datas
-        return view('student.queWeek', [
-            'metadata' => $metadata,
-            'school' => session('schoolData'),
-            'user' => Auth::guard($model_name)->user(),
-            'data' => $data
-        ]);
+        DB::connection($school->school_database)
+                        ->insert('INSERT INTO student_messages (student_id, class, recipient, title, message) VALUES (?, ?, ?, ?, ?)', [$student_id, $class, $recipient, $title, $message]);
+        
+        // Redirect
+        return redirect(route('student.message'));
     }
 }

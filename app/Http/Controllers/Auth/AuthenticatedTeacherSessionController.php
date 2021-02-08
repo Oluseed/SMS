@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AuthenticatedTeacherSessionController extends Controller
 {
@@ -23,11 +24,13 @@ class AuthenticatedTeacherSessionController extends Controller
             'keywords' => 'Teacher, Result checker, Teacher login, Login page, Teacher form'
         ];
 
-        $school = session('schoolData');
+        if (!$request->session()->has('schoolData')) {
+            return redirect('/select_school');
+        }
 
         return view('auth.teacher-login', [
             'metadata' => $metadata,
-            'school' => $school
+            'school' => session('schoolData')
         ]);
     }
 
@@ -39,11 +42,16 @@ class AuthenticatedTeacherSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
+        session(['role' => 'teacher']);
+        
         $request->authenticate();
 
+        if (!$request->session()->has('schoolData')) {
+            return redirect('/select_school');
+        }
         $request->session()->regenerate();
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::HOMETEACHER);
     }
 
     /**
@@ -54,12 +62,17 @@ class AuthenticatedTeacherSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        Auth::guard('web')->logout();
+        $school = session('schoolData');
+        $school_code = $school->school_code;
+        $role = session('role');
+        $model_name = $school_code.'_'.$role;
+
+        Auth::guard($model_name)->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect(RouteServiceProvider::TEACHERLOGIN);
     }
 }

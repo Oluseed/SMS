@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
         <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
         <script src="https://kit.fontawesome.com/06a287e153.js" crossorigin="anonymous"></script>
-        <script src="srms.js"></script>
+        <script src="{{ asset('js/srms.js') }}"></script>
     </head>
 
     <body>
@@ -58,6 +58,10 @@
             <section class="content">
                 @yield('content')
             </section>
+        @endif
+
+        @hasSection('content_queweek')
+            @yield('content_queweek')
         @endif
 
         @hasSection('bottom_box')

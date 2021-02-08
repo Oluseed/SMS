@@ -28,6 +28,7 @@
                             <th>2<sup>nd</sup> Test Score</th>
                             <th>Total Score</th>
                         </tr>
+                        @if ($data != '')
                         @if ($data->sub1)
                         <tr>
                             <td>1</td>
@@ -146,6 +147,11 @@
                             @foreach (explode(',', $data->sub15) as $row)
                             <td>{{ $row }}</td>
                             @endforeach
+                        </tr>
+                        @endif
+                        @else
+                        <tr>
+                            <td colspan="5" style="color:red;" class="capitalize">This result has not been posted yet!!!</td>
                         </tr>
                         @endif
                     </table>
