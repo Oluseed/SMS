@@ -56,13 +56,16 @@ class SRMSController extends Controller
         ]);
     }
 
-    public function index_schoolHomepage(Request $request){
-        $metadata = [
-            'title' => '| HOMEPAGE',
-            'description' => 'Welcome to your school homepage at Students Result Management System',
-            'keywords' => 'Students, Result checker, School Homepage, School index Page'
-        ];
+    public function create_school(Request $request){
+        if (Auth::check() || $request->session()->exists('schoolData')) {
+            $model_name = session('model_name');
 
+            Auth::guard($model_name)->logout();
+
+            $request->session()->invalidate();
+
+            $request->session()->regenerateToken();
+        }
         // Request input, Find schooldata, Redirect if find fails, Get School Database
         $school_name = $request->input('school_name');
         $srms_school = School::find($school_name);
@@ -76,10 +79,24 @@ class SRMSController extends Controller
         
         // Set $school and School database as session variables
         session(['schoolData' => $school[0]]);
+
+        return redirect(route('school.portal'));
+    }
+
+    public function index_schoolHomepage(Request $request){
+        $metadata = [
+            'title' => '| HOMEPAGE',
+            'description' => 'Welcome to your school homepage at Students Result Management System',
+            'keywords' => 'Students, Result checker, School Homepage, School index Page'
+        ];
+
+        if (!$request->session()->has('schoolData')) {
+            return redirect('/select_school');
+        }
         
         return view('homepage', [
             'metadata' => $metadata,
-            'school' => $school[0]
+            'school' => session('schoolData'),
         ]);
     }
 }

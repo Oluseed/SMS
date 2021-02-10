@@ -24,6 +24,10 @@
                     <ul>
                     @foreach($data as $row)
                         <h3 style="color: #0c3b79;">{{ $row->title }}</h3>
+                        <span class="right">From: 
+                            <span class="capitalize" style="color:#0c3b79">{{ $row->name }}</span>
+                        </span>
+                        <br>
                         <li>{{ $row->story }}</li>
                     @endforeach
                     </ul>

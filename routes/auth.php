@@ -29,7 +29,7 @@ Route::post('/student_login', [AuthenticatedStudentSessionController::class, 'st
 
 Route::get('/teacher_login', [AuthenticatedTeacherSessionController::class, 'create'])
                 ->middleware('guest')
-                ->name('teacher_login');
+                ->name('teacher.login');
 
 Route::post('/teacher_login', [AuthenticatedTeacherSessionController::class, 'store'])
                 ->middleware('guest');
@@ -70,9 +70,7 @@ Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store']
                 ->middleware('auth');
 
 Route::post('/logout', [AuthenticatedStudentSessionController::class, 'destroy'])
-                ->middleware('auth')
                 ->name('logout');
 
 Route::post('/teacher_logout', [AuthenticatedTeacherSessionController::class, 'destroy'])
-                ->middleware('auth')
                 ->name('teacher.logout');

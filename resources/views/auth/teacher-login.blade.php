@@ -14,7 +14,7 @@
 
 
                 <img src="imgs/images(7).jpg" alt="Teachers Poster" title="Teachers Poster"/>
-                <form method="POST" action="{{ url('/teacher_login') }}">
+                <form method="POST" action="{{ route('teacher.login') }}">
                     @csrf
                     <!-- Validation Errors -->
                     {{-- @props(['errors']) --}}

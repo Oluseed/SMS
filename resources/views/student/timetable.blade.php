@@ -35,6 +35,7 @@
                             <th>{{ $row->col7 }}</th>
                             <th>{{ $row->col8 }}</th>
                             <th>{{ $row->col9 }}</th>
+                            <th>{{ $row->col10 }}</th>
                         </tr>
                     @else
                         <tr>
@@ -48,6 +49,7 @@
                             <td>{{ $row->col7 }}</td>
                             <td>{{ $row->col8 }}</td>
                             <td>{{ $row->col9 }}</td>
+                            <td>{{ $row->col10 }}</td>
                         </tr>
                     @endif
                     @endforeach

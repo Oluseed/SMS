@@ -233,6 +233,25 @@ body{
     font-size: 16px;
 }
 
+.button3{
+    margin: 0 2px;
+    padding: 5px;
+    border-radius: 3px;
+    float: right;
+    color: #fff;
+    background: #0a3300;
+    font-size: 16px;
+}
+
+.button4{
+    margin: 0 2px;
+    padding: 3px 2px;
+    border-radius: 2px;
+    float: right;
+    color: #fff;
+    font-size: 12px;
+}
+
 .button_null{
     margin: 0;
     padding: 0;
@@ -364,6 +383,53 @@ body{
     font-size: 16px;
 }
 
+.form_4{
+    padding: 20px;
+    overflow: auto;
+    font-family: Monospace;
+    font-size: 16px;
+}
+
+.form_4 label{
+    margin: 2px 0;
+    padding-left:10px;
+    font-size:20px;
+    color: #0c3b79;
+    font-weight: 600;
+}
+
+.form_4 input{
+    margin: 10px 0;
+	border:0;
+    border-bottom:2px solid #0c3b79;
+    width:100%;
+    height:25px;
+}
+.form_4 input:hover{
+    border: 2px inset #0c3b79;
+    border-radius: 2px;
+}
+
+.form_4 textarea{
+    margin: 10px 0;
+    border:2px solid #0c3b79;
+    border-radius:10px;
+    width:100%;
+}
+.form_4 textarea:hover{
+    border: 2px inset #0c3b79;
+}
+
+.form_4 select{
+    margin: 10px 0;
+    padding: 5px;
+	border: 0;
+    border-bottom:1px solid;
+    width:100%;
+    height:25px;
+    color:#0c3b79;
+}
+
 
 
 
@@ -462,7 +528,7 @@ body{
 
 
 .content_box ul li{
-    margin: 0;
+    margin: 0 0 20px 0;
     padding: 10px 0;
     border-bottom: 2.5px solid #0c3b79;
     list-style-type: none;
@@ -541,17 +607,17 @@ body{
         /*TEACHER PAGES*/
         
         
-.content_box #ul1{
+.content_box .ul1{
     margin: 0;
     padding: 0;
 }
         
-.content_box #ul1 .day_box{
+.content_box .ul1 .day_box{
     text-decoration: none;
     color: #0c3b79;
 }
         
-.content_box #ul1 .day_box li{
+.content_box .ul1 .day_box li{
     margin: 0;
     padding: 15px 10%;
     border-bottom: 2px solid #0c3b79;
@@ -561,11 +627,11 @@ body{
     font-weight: 500;
 }
 
-#ul1 .table_box{
+.ul1 .table_box{
     display: none;
 }
 
-#ul1 .table_box table{
+.ul1 .table_box table{
     border-color: #0c3b79;
     border-collapse: collapse;
     width: 100%;
@@ -573,20 +639,20 @@ body{
     font-family: Monospace;
 }
 
-#url .table_box table tr{
+.url .table_box table tr{
     border-bottom: 1px solid #0078ff;
 }
 
-#ul1 .table_box table tr th{
+.ul1 .table_box table tr th{
     padding: 15px 0;
 }
 
-#ul1 .table_box table tr td{
+.ul1 .table_box table tr td{
     padding: 0;
     text-align: center;
 }
 
-#ul1 .table_box table tr td input{
+.ul1 .table_box table tr td input{
     margin: 0;
     padding: 5px 2px;
     width: 95%;
@@ -595,6 +661,21 @@ body{
     display: block;
     text-align: center;
     font-size: 16px;
+}
+
+.class_box li{
+    margin: 0;
+    padding: 15px 10%;
+    border-bottom: 2px solid #0c3b79;
+    list-style-type: none;
+    font-family: auto;
+    font-size: 25px;
+    font-weight: 500;
+    color: #0c3b79;
+}
+
+.table_box{
+    display: none;
 }
 
 

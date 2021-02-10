@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SRMSController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\TimetableController;
 use App\Http\Controllers\Auth\AuthenticatedStudentSessionController;
 use App\Http\Controllers\Auth\AuthenticatedTeacherSessionController;
 
@@ -22,11 +25,15 @@ Route::get('/', [SRMSController::class, 'index'])
                 ->name('home');
 
 Route::get('/select_school', [SRMSController::class, 'show_school'])
+                ->middleware('guest')
+                ->name('select.school');
+
+Route::post('/select_school', [SRMSController::class, 'create_school'])
                 ->middleware('guest');
 
-Route::post('/school_portal', [SRMSController::class, 'index_schoolHomepage'])
-                ->middleware('guest');
-
+Route::get('/school_portal', [SRMSController::class, 'index_schoolHomepage'])
+                ->middleware('guest')
+                ->name('school.portal');
 
 Route::prefix('student')->group(function () {
     Route::get('/portal', [StudentController::class, 'index'])
@@ -56,6 +63,39 @@ Route::prefix('student')->group(function () {
 
     Route::get('/timetable', [StudentController::class, 'show_timetable'])
             ->name('student.timetable');
+});
+
+Route::prefix('teacher')->group(function () {
+    Route::get('/portal', [TeacherController::class, 'index'])
+                ->name('teacher.portal');
+
+    Route::prefix('announcements')->group(function () {
+        Route::get('/', [AnnouncementController::class, 'index'])
+                    ->name('teacher.announcement');
+
+        Route::post('/', [AnnouncementController::class, 'store'])
+                    ->name('teacher.announcement');
+
+        Route::get('/{id}/edit', [AnnouncementController::class, 'edit']);
+
+        Route::put('/{id}', [AnnouncementController::class, 'update']);
+
+        Route::delete('/{id}/delete', [AnnouncementController::class, 'delete']);
+    });
+
+    Route::prefix('timetable')->group(function () {
+        Route::get('/', [TimetableController::class, 'index'])
+                    ->name('teacher.timetable');
+
+        Route::post('/', [TimetableController::class, 'store'])
+                    ->name('teacher.timetable');
+
+        Route::get('/{id}/edit', [TimetableController::class, 'edit']);
+
+        Route::put('/{id}', [TimetableController::class, 'update']);
+
+        Route::delete('/{id}/delete', [TimetableController::class, 'delete']);
+    });
 });
 
 

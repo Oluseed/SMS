@@ -18,9 +18,12 @@ class StudentController extends Controller
             }
             $school = session('schoolData');
             $school_code = $school->school_code;
-            $role = session('role');
-            $this->model_name = 'auth'.$school_code.'_'.$role;
-
+            $name = $school_code.'_student';
+            
+            if (Auth::guard($name)->user() == '') {
+                return redirect(route('login'));
+            }
+            $this->model_name = 'auth:'.$school_code.'_student';
             return $next($request);
         });
     }
@@ -64,14 +67,14 @@ class StudentController extends Controller
         // Get page data content from database
         $school = session('schoolData');
         $data = DB::connection($school->school_database)
-                        ->select('SELECT * FROM announcements ORDER BY created_at DESC');
-
+                        ->select('SELECT announcements.*, teachers.name FROM announcements, teachers WHERE announcements.teacher_id = teachers.id ORDER BY announcements.created_at DESC');
+        
         if ($data != []) {
             $datas = $data;
-        } else {
+        } 
+        else {
             $datas = '';
         }
-
         // Return view with datas
         return view('student.announcement', [
             'metadata' => $metadata,

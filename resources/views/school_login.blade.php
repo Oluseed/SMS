@@ -14,7 +14,7 @@
             <div class="intro_box">
                 <h2>Select Your School</h2>
                 
-                <form method="POST" action="/school_portal" class="form_2" autocomplete="off">
+                <form method="POST" action="{{ route('select.school') }}" class="form_2" autocomplete="off">
                     @csrf
                     <input type="text" name="school_name" list="name" required/>
                     <datalist id="name">

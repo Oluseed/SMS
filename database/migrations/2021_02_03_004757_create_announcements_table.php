@@ -15,6 +15,8 @@ class CreateAnnouncementsTable extends Migration
     {
         Schema::connection('anc_srms')->create('announcements', function (Blueprint $table) {
             $table->id();
+            $table->integer('teacher_id');
+            $table->string('class');
             $table->string('title');
             $table->string('story');
             $table->timestamps();
