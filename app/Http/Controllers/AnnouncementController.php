@@ -89,10 +89,11 @@ class AnnouncementController extends Controller
         return redirect(route('teacher.announcement'));
     }
 
-    public function edit(Request $request, $id){
+    public function edit(Request $request, $id)
+    {
         $metadata = [
             'title' => '| TEACHER PORTAL',
-            'description' => 'Post and check announcements on your teacher portal at Students Result Management System',
+            'description' => 'Edit and Post announcements on your teacher portal at Students Result Management System',
             'keywords' => 'Teacher, Result checker, Teacher portal, Teacher data, Teacher activities, Announcements',
             'body_pics' => 'body2'
         ];
@@ -129,8 +130,8 @@ class AnnouncementController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id) {
-        
+    public function update(Request $request, $id) 
+    {
         // Redirect if session schooldata isset
         if (!$request->session()->has('schoolData')) {
             return redirect('/select_school');
@@ -159,8 +160,8 @@ class AnnouncementController extends Controller
         return redirect(route('teacher.announcement'));
     }
 
-    public function delete(Request $request, $id) {
-        
+    public function destroy(Request $request, $id) 
+    {
         // Redirect if session schooldata isset
         if (!$request->session()->has('schoolData')) {
             return redirect('/select_school');

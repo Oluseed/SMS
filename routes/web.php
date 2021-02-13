@@ -92,12 +92,16 @@ Route::prefix('teacher')->group(function () {
 
         Route::get('/{id}/edit', [TimetableController::class, 'edit']);
 
-        Route::put('/{id}', [TimetableController::class, 'update']);
+        Route::put('/{id}/{class}', [TimetableController::class, 'update'])
+                    ->name('teacher.timetable.update');
 
-        Route::delete('/{id}/delete', [TimetableController::class, 'delete']);
+        Route::delete('/{class}/delete', [TimetableController::class, 'destroy']);
     });
 });
 
+// Route::fallback(function (){
+//     return redirect()->back();
+// });
 
 
 
