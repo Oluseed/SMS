@@ -28,7 +28,8 @@ class StudentController extends Controller
         });
     }
 
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         $metadata = [
             'title' => '| STUDENT PORTAL',
             'description' => 'Welcome to your student portal at Students Result Management System',
@@ -50,7 +51,8 @@ class StudentController extends Controller
         ]);
     }
 
-    public function show_announcements(Request $request){
+    public function show_announcements(Request $request)
+    {
         $metadata = [
             'title' => '| STUDENT PORTAL',
             'description' => 'Read announcements on your student portal at Students Result Management System',
@@ -84,7 +86,8 @@ class StudentController extends Controller
         ]);
     }
 
-    public function show_timetable(Request $request){
+    public function show_timetable(Request $request)
+    {
         $metadata = [
             'title' => '| STUDENT PORTAL',
             'description' => 'Check timetable on your student portal at Students Result Management System',
@@ -118,7 +121,8 @@ class StudentController extends Controller
         ]);
     }
 
-    public function show_test_result(Request $request){
+    public function show_test_result(Request $request)
+    {
         $metadata = [
             'title' => '| STUDENT PORTAL',
             'description' => 'Check test result on your student portal at Students Result Management System',
@@ -152,7 +156,8 @@ class StudentController extends Controller
         ]);
     }
 
-    public function show_exam_result(Request $request){
+    public function show_exam_result(Request $request)
+    {
         $metadata = [
             'title' => '| STUDENT PORTAL',
             'description' => 'Check exam result on your student portal at Students Result Management System',
@@ -186,7 +191,8 @@ class StudentController extends Controller
         ]);
     }
     
-    public function show_queWeek(Request $request){
+    public function show_queWeek(Request $request)
+    {
         $metadata = [
             'title' => '| STUDENT PORTAL',
             'description' => 'Check question of the week on your student portal at Students Result Management System',
@@ -220,7 +226,8 @@ class StudentController extends Controller
         ]);
     }
 
-    public function store_queWeek(Request $request){
+    public function store_queWeek(Request $request)
+    {
 
         // Redirect if session schooldata isset
         if (!$request->session()->has('schoolData')) {

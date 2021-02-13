@@ -6,6 +6,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\TimetableController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\Auth\AuthenticatedStudentSessionController;
 use App\Http\Controllers\Auth\AuthenticatedTeacherSessionController;
 
@@ -96,6 +97,21 @@ Route::prefix('teacher')->group(function () {
                     ->name('teacher.timetable.update');
 
         Route::delete('/{class}/delete', [TimetableController::class, 'destroy']);
+    });
+
+    Route::prefix('test_result')->group(function () {
+        Route::get('/', [TestController::class, 'index'])
+                    ->name('teacher.test_result');
+
+        Route::post('/', [TestController::class, 'store'])
+                    ->name('teacher.test_result');
+
+        Route::get('/{id}/edit', [TestController::class, 'edit']);
+
+        Route::put('/{id}/{class}', [TestController::class, 'update'])
+                    ->name('teacher.test_result.update');
+
+        Route::delete('/{class}/delete', [TestController::class, 'destroy']);
     });
 });
 

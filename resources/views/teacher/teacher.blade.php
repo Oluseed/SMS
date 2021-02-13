@@ -29,7 +29,7 @@
                         <br/>
                         <span>TIMETABLE</span>
                     </a>
-                    <a href="test_result.html" class="nav_box left">
+                    <a href="{{ route('teacher.test_result') }}" class="nav_box left">
                         <i class="fas fa-scroll" aria-hidden="true"></i>
                         <br/>
                         <br/>

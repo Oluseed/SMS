@@ -16,6 +16,8 @@ class CreateTestResultsTable extends Migration
         Schema::connection('amc_srms')->create('test_results', function (Blueprint $table) {
             $table->id();
             $table->string('student_id');
+            $table->string('class');
+            $table->string('term_session');
             $table->string('sub1')->nullable();
             $table->string('sub2')->nullable();
             $table->string('sub3')->nullable();
