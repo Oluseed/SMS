@@ -18,7 +18,7 @@ class CreateAnnouncementsTable extends Migration
             $table->integer('teacher_id');
             $table->string('class');
             $table->string('title');
-            $table->string('story');
+            $table->longText('story');
             $table->timestamps();
         });
     }

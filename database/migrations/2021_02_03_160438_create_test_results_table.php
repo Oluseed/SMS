@@ -33,6 +33,7 @@ class CreateTestResultsTable extends Migration
             $table->string('sub13')->nullable();
             $table->string('sub14')->nullable();
             $table->string('sub15')->nullable();
+            $table->longText('comment')->nullable();
             $table->timestamps();
         });
     }

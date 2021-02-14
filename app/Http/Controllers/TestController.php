@@ -24,9 +24,9 @@ class TestController extends Controller
             'body_pics' => 'body2'
         ];
         // Redirect if session schooldata isset
-        if (!$request->session()->has('schoolData')) {
-            return redirect('/select_school');
-        }
+        // if (!$request->session()->has('schoolData')) {
+        //     return redirect('/select_school');
+        // }
         // Get model_name
         $model_name = session('model_name');
 
@@ -36,18 +36,20 @@ class TestController extends Controller
 
         if ($user->class_teacher != '') {
             $data = DB::connection($school->school_database)
-                            ->select('SELECT test_results.*, students.id, students.name FROM test_results, students WHERE test_results.student_id = students.id AND test_results.class = :class', [
+                            ->select('SELECT students.id, students.name, test_results.student_id, students.class FROM students, test_results WHERE students.id != test_results.student_id AND (test_results.class = :clas AND students.class = :class)', [
+                                'clas' => $user->class_teacher, 'class' => $user->class_teacher]);
+        
+            $data2 = DB::connection($school->school_database)
+                            ->select('SELECT students.id, students.name, test_results.student_id, test_results.class FROM students, test_results WHERE students.id = test_results.student_id AND test_results.class = :class', [
                                 'class' => $user->class_teacher]);
-            if ($data != []) {
-                $datas = $data[0];
-            }
         }
         // Return view with datas
         return view('teacher.test_result', [
             'metadata' => $metadata,
             'school' => session('schoolData'),
             'user' => Auth::guard($model_name)->user(),
-            'data' => $datas ?? ''
+            'data' => $data ?? '',
+            'data2' => $data2 ?? '',
         ]);
     }
 

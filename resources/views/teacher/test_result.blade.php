@@ -21,14 +21,14 @@
                         <i class="far fa-map" aria-hidden="true"></i><b>Post Test Results</b>
                     </div>
                     <ul class="ul1">
-                        <form method="POST" action="#">
+                        <form method="POST" action="{{ route('teacher.test_result') }}">
+                            @csrf
                             <h3>Select the Student's name <i class="fas fa-angle-double-down right"></i></h3>
-                            <input type="text" class="datalist-test" name="school_name" list="name" required/>
+                            <input type="text" class="datalist-test" name="school_name" list="name" autocomplete="off" required/>
                             <datalist id="name">
-                        		<option>Ace Model College</option>
-                        		<option>Ankerfield Model College</option>
-                        		<option>Burdersmouth Model College</option>
-                        		<option>Paddington High School</option>
+                                @foreach ($data as $row)
+                        		<option value="{{ $row->name }}">{{ $row->name }}</option>
+                                @endforeach
                             </datalist>
                             <table border="1">
                                 <tr>
@@ -37,7 +37,6 @@
                                     <th>1<sup>st</sup>Test Score</th>
                                     <th>2<sup>nd</sup> Test Score</th>
                                     <th>Total Score</th>
-                                 
                                 </tr>
                                 
                                 <tr>
@@ -46,7 +45,6 @@
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
-                                   
                                 </tr>
                             
                                 <tr>
@@ -55,7 +53,6 @@
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
-                                    
                                 </tr>
                   
                                 <tr>
@@ -64,9 +61,7 @@
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
-                                   
                                 </tr>
-                  
                   
                                 <tr>
                                     <td>4</td>
@@ -74,7 +69,6 @@
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
-                                    
                                 </tr>
                             
                                 <tr>
@@ -83,7 +77,6 @@
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
-                                   
                                 </tr>
                             
                                 <tr>
@@ -92,7 +85,6 @@
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
-                                  
                                 </tr>
                             
                                 <tr>
@@ -101,7 +93,6 @@
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
-                                  
                                 </tr>
                   
                                 <tr>
@@ -110,7 +101,6 @@
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
-                                   
                                 </tr>
                   
                                 <tr>
@@ -119,7 +109,6 @@
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
-                                   
                                 </tr>
                   
                                 <tr>
@@ -128,7 +117,6 @@
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
-                                   
                                 </tr>
                             
                                 <tr>
@@ -137,7 +125,6 @@
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
-                                  
                                 </tr>
                                 <tr>
                                     <td>12</td>
@@ -145,7 +132,6 @@
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
-                                  
                                 </tr>
                                 <tr>
                                     <td>13</td>
@@ -153,7 +139,6 @@
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
-                                  
                                 </tr>
                                 <tr>
                                     <td>14</td>
@@ -161,7 +146,6 @@
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
-                                  
                                 </tr>
                                 <tr>
                                     <td>15</td>
@@ -169,21 +153,36 @@
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
                                     <td><input type="number" name=""/></td>
-                                  
                                 </tr>
                             </table>
+                            <button class="button3" style="margin-top:30px;" type="submit">Post Result
+  						        <i class="far fa-paper-plane"></i>
+  						    </button>
                         </form>
                     </ul>
-          
-         
-                    <button class="button2">Download</button>
-                    <button class="button2">Print</button>
-          
                 </article>
 @endsection
 
 @section('content_queweek')
+            <div class="intro_box">
+                <h2>Select the student name you want to check</h2>
                 
+                <form method="POST" action="{{ route('teacher.test_result') }}" class="form_2" autocomplete="off">
+                    @csrf
+                    <input type="text" name="name" list="name" required/>
+                    <datalist id="name">
+                        @foreach ($data2 as $row)
+                        <option value="{{ $row->name }}">{{ $row->name }}</option>
+                        @endforeach
+                    </datalist>
+                    <br>
+                    <br>
+                    <button type="submit" class="button1">Check Result
+                        <i class="far fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+            <br/><br/>
 @endsection
 
 @section('bottom_box')
