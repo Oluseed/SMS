@@ -10,24 +10,6 @@ use App\Http\Controllers\Controller;
 
 class StudentController extends Controller
 {
-    public function __construct(Request $request) 
-    {
-        $this->middleware(function ($request, $next) {
-            if (!$request->session()->has('schoolData')) {
-                return redirect('/select_school');
-            }
-            $school = session('schoolData');
-            $school_code = $school->school_code;
-            $name = $school_code.'_student';
-            
-            if (Auth::guard($name)->user() == '') {
-                return redirect(route('login'));
-            }
-            $this->model_name = 'auth:'.$school_code.'_student';
-            return $next($request);
-        });
-    }
-
     public function index(Request $request)
     {
         $metadata = [
@@ -256,7 +238,8 @@ class StudentController extends Controller
         return redirect(route('student.queWeek'));
     }
 
-    public function show_lesson_files(Request $request){
+    public function show_lesson_files(Request $request)
+    {
         $metadata = [
             'title' => '| STUDENT PORTAL',
             'description' => 'Open lesson files on your student portal at Students Result Management System',
@@ -284,7 +267,8 @@ class StudentController extends Controller
         ]);
     }
 
-    public function show_message(Request $request){
+    public function show_message(Request $request)
+    {
         $metadata = [
             'title' => '| STUDENT PORTAL',
             'description' => 'Send a question and recieve answers on your student portal at Students Result Management System',
@@ -318,7 +302,8 @@ class StudentController extends Controller
         ]);
     }
 
-    public function store_message(Request $request){
+    public function store_message(Request $request)
+    {
         
         // Redirect if session schooldata isset
         if (!$request->session()->has('schoolData')) {

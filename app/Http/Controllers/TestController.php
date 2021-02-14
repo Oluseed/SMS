@@ -37,20 +37,17 @@ class TestController extends Controller
         if ($user->class_teacher != '') {
             $data = DB::connection($school->school_database)
                             ->select('SELECT test_results.*, students.id, students.name FROM test_results, students WHERE test_results.student_id = students.id AND test_results.class = :class', [
-                                'class' => $user->class_teacher]);dd($data);
+                                'class' => $user->class_teacher]);
             if ($data != []) {
                 $datas = $data[0];
             }
-        }
-        if (!isset($datas)) {
-            $datas = '';
         }
         // Return view with datas
         return view('teacher.test_result', [
             'metadata' => $metadata,
             'school' => session('schoolData'),
             'user' => Auth::guard($model_name)->user(),
-            'data' => $datas
+            'data' => $datas ?? ''
         ]);
     }
 

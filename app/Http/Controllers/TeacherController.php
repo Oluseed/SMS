@@ -10,24 +10,6 @@ use App\Http\Controllers\Controller;
 
 class TeacherController extends Controller
 {
-    public function __construct(Request $request) 
-    {
-        $this->middleware(function ($request, $next) {
-            if (!$request->session()->has('schoolData')) {
-                return redirect('/select_school');
-            }
-            $school = session('schoolData');
-            $school_code = $school->school_code;
-            $name = $school_code.'_teacher';
-
-            if (Auth::guard($name)->user() == '') {
-                return redirect(route('teacher.login'));
-            }
-            $this->model_name = 'auth:'.$school_code.'_teacher';
-            return $next($request);
-        });
-    }
-
     public function index(Request $request){
         $metadata = [
             'title' => '| TEACHER PORTAL',

@@ -36,7 +36,7 @@ Route::get('/school_portal', [SRMSController::class, 'index_schoolHomepage'])
                 ->middleware('guest')
                 ->name('school.portal');
 
-Route::prefix('student')->group(function () {
+Route::group(['prefix' => 'student', 'middleware' => 'StudentRole'], function () {
     Route::get('/portal', [StudentController::class, 'index'])
                 ->name('student.portal');
     
@@ -66,7 +66,7 @@ Route::prefix('student')->group(function () {
             ->name('student.timetable');
 });
 
-Route::prefix('teacher')->group(function () {
+Route::group(['prefix' => 'teacher', 'middleware' => 'TeacherRole'], function () {
     Route::get('/portal', [TeacherController::class, 'index'])
                 ->name('teacher.portal');
 

@@ -35,7 +35,7 @@
                         <br/>
                         <span>TEST RESULTS</span>
                     </a>
-                    <a href="exam_result.html" class="nav_box right">
+                    <a href="{{ route('teacher.test_result') }}" class="nav_box right">
                         <i class="far fa-map" aria-hidden="true"></i>
                         <br/>
                         <br/>

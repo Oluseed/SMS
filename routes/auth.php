@@ -70,7 +70,9 @@ Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store']
                 ->middleware('auth');
 
 Route::post('/logout', [AuthenticatedStudentSessionController::class, 'destroy'])
+                ->middleware('StudentRole')
                 ->name('logout');
 
 Route::post('/teacher_logout', [AuthenticatedTeacherSessionController::class, 'destroy'])
+                ->middleware('TeacherRole')
                 ->name('teacher.logout');

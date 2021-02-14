@@ -11,20 +11,6 @@ use Illuminate\Support\Facades\DB;
 
 class AuthenticatedTeacherSessionController extends Controller
 {
-    public function __construct(Request $request) 
-    {
-        $this->middleware(function ($request, $next) {
-            if (!$request->session()->has('schoolData')) {
-                return redirect('/select_school');
-            }
-            $school = session('schoolData');
-            $school_code = $school->school_code;
-            $role = session('role');
-            $this->model_name = 'auth'.$school_code.'_'.$role;
-
-            return $next($request);
-        })->only('destroy');
-    }
     /**
      * Display the login view.
      *
@@ -76,10 +62,8 @@ class AuthenticatedTeacherSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        $school = session('schoolData');
-        $school_code = $school->school_code;
-        $role = session('role');
-        $model_name = $school_code.'_'.$role;
+        $school = session('schoolData')->school_code;
+        $model_name = $school.'_teacher';
         
         Auth::guard($model_name)->logout();
 

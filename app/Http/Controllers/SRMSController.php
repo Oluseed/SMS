@@ -17,9 +17,9 @@ class SRMSController extends Controller
             'description' => 'Students Result Management System',
             'keywords' => 'Students, Result checker'
         ];
+        $model_name = session('model_name');
 
-        if (Auth::check() || $request->session()->exists('schoolData')) {
-            $model_name = session('model_name');
+        if (Auth::guard($model_name)->check() || $request->session()->exists('schoolData')) {
 
             Auth::guard($model_name)->logout();
 
@@ -37,9 +37,9 @@ class SRMSController extends Controller
             'description' => 'Login to or select school portal at Students Result Management System',
             'keywords' => 'Students, Result checker, Select School, Choose school, School list'
         ];
+        $model_name = session('model_name');
 
-        if (Auth::check() || $request->session()->exists('schoolData')) {
-            $model_name = session('model_name');
+        if (Auth::guard($model_name)->check() || $request->session()->exists('schoolData')) {
 
             Auth::guard($model_name)->logout();
 
@@ -47,7 +47,6 @@ class SRMSController extends Controller
 
             $request->session()->regenerateToken();
         }
-
         $schools = School::all();
 
         return view('school_login', [
@@ -57,8 +56,9 @@ class SRMSController extends Controller
     }
 
     public function create_school(Request $request){
+        $model_name = session('model_name');
+
         if (Auth::check() || $request->session()->exists('schoolData')) {
-            $model_name = session('model_name');
 
             Auth::guard($model_name)->logout();
 
@@ -89,11 +89,9 @@ class SRMSController extends Controller
             'description' => 'Welcome to your school homepage at Students Result Management System',
             'keywords' => 'Students, Result checker, School Homepage, School index Page'
         ];
-
         if (!$request->session()->has('schoolData')) {
             return redirect('/select_school');
         }
-        
         return view('homepage', [
             'metadata' => $metadata,
             'school' => session('schoolData'),
