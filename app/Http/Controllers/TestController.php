@@ -113,7 +113,7 @@ class TestController extends Controller
                         ]);
         
         // Redirect
-        return redirect()->route('teacher.test_result')->with('message', 'The result has been sucessfully posted');
+        return redirect()->route('teacher.test_result')->with('message', $request->input('student_name').' result has been posted sucessfully');
     }
 
     /**
