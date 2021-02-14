@@ -87,6 +87,9 @@ class TestController extends Controller
         // Get Data And Insert
         $id = DB::connection($school->school_database)
                             ->select('SELECT id FROM students WHERE name = ?', [$request->input('student_name')]);
+        if ($id == null) {
+            return redirect()->route('teacher.timetable')->with('message', 'Student name does not match, please select the student from the list');
+        }
         
         $student_id = $id[0]->id;
         $class = $user->class_teacher;
