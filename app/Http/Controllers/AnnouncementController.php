@@ -10,7 +10,8 @@ use App\Http\Controllers\Controller;
 
 class AnnouncementController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         $metadata = [
             'title' => '| TEACHER PORTAL',
             'description' => 'Post and check announcements on your teacher portal at Students Result Management System',
@@ -45,7 +46,8 @@ class AnnouncementController extends Controller
         ]);
     }
 
-    public function store(Request $request) {
+    public function store(Request $request) 
+    {
         
         // Redirect if session schooldata isset
         if (!$request->session()->has('schoolData')) {
