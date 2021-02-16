@@ -106,6 +106,9 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'TeacherRole'], function ()
         Route::post('/', [TestController::class, 'store'])
                     ->name('teacher.test_result');
 
+        Route::get('/check_result/{id}', [TestController::class, 'show'])
+                    ->name('teacher.test_result.show');
+
         Route::get('/{id}/edit', [TestController::class, 'edit']);
 
         Route::put('/{id}/{class}', [TestController::class, 'update'])
@@ -116,7 +119,7 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'TeacherRole'], function ()
 });
 
 // Route::fallback(function (){
-//     return redirect()->back();
+//     return redirect()->back()  ?? route('home');
 // });
 
 
@@ -125,9 +128,6 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'TeacherRole'], function ()
 
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 

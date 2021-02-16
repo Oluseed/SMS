@@ -23,10 +23,6 @@ class TestController extends Controller
             'keywords' => 'Teacher, Result checker, Teacher portal, Student data, Student activities, Test Result',
             'body_pics' => 'body2'
         ];
-        // Redirect if session schooldata isset
-        // if (!$request->session()->has('schoolData')) {
-        //     return redirect('/select_school');
-        // }
         // Get model_name
         $model_name = session('model_name');
 
@@ -37,8 +33,12 @@ class TestController extends Controller
         if ($user->class_teacher != '') {
             // Those with unposted result 
             $data = DB::connection($school->school_database)
-                            ->select('SELECT students.id, students.name, students.class FROM students, test_results WHERE students.id != test_results.student_id AND (test_results.class = :clas AND students.class = :class)', [
+                            ->select('SELECT students.name FROM students, test_results WHERE students.id != test_results.student_id AND (test_results.class = :clas AND students.class = :class)', [
                                 'clas' => $user->class_teacher, 'class' => $user->class_teacher]);
+            // $data = DB::connection($school->school_database)
+            //                 ->select('SELECT students.name FROM students, test_results WHERE students.id != test_results.student_id AND students.class = ?', [
+            //                     $user->class_teacher]);//dd($data);
+
             // Those with posted result
             $data2 = DB::connection($school->school_database)
                             ->select('SELECT students.id, students.name, test_results.student_id, test_results.class FROM students, test_results WHERE students.id = test_results.student_id AND test_results.class = :class', [
@@ -73,14 +73,10 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-        // Redirect if session schooldata isset
-        if (!$request->session()->has('schoolData')) {
-            return redirect('/select_school');
-        }
         // Get model_name
         $model_name = session('model_name');
 
-        // Get page data content from database
+        // Get page data content from database 
         $school = session('schoolData');
         $user = Auth::guard($model_name)->user();
         
@@ -88,7 +84,7 @@ class TestController extends Controller
         $id = DB::connection($school->school_database)
                             ->select('SELECT id FROM students WHERE name = ?', [$request->input('student_name')]);
         if ($id == null) {
-            return redirect()->route('teacher.timetable')->with('message', 'Student name does not match, please select the student from the list');
+            return redirect()->route('teacher.test_result')->with('message', 'Student name does not match, please select the student from the list');
         }
         
         $student_id = $id[0]->id;
@@ -127,7 +123,31 @@ class TestController extends Controller
      */
     public function show($id)
     {
-        //
+        $metadata = [
+            'title' => '| TEACHER PORTAL',
+            'description' => 'Check and post test result on your teacher portal at Students Result Management System',
+            'keywords' => 'Teacher, Result checker, Teacher portal, Student data, Student activities, Test Result',
+            'body_pics' => 'body2'
+        ];
+        // Get model_name
+        $model_name = session('model_name');
+
+        // Get page data content from database
+        $school = session('schoolData');
+        $user = Auth::guard($model_name)->user();
+        
+        if ($user->class_teacher != '') {
+            $data = DB::connection($school->school_database)
+                            ->select('SELECT students.name, test_results.* FROM students, test_results WHERE students.id = test_results.student_id AND students.name = :name', [
+                                'name' => $id]);
+        }
+        // Return view with datas
+        return view('teacher.test_result_show', [
+            'metadata' => $metadata,
+            'school' => session('schoolData'),
+            'user' => Auth::guard($model_name)->user(),
+            'data' => $data[0],
+        ]);
     }
 
     /**
@@ -138,7 +158,31 @@ class TestController extends Controller
      */
     public function edit($id)
     {
-        //
+        $metadata = [
+            'title' => '| TEACHER PORTAL',
+            'description' => 'Edit and post test result on your teacher portal at Students Result Management System',
+            'keywords' => 'Teacher, Result checker, Teacher portal, Student data, Student activities, Test Result Edit',
+            'body_pics' => 'body2'
+        ];
+        // Get model_name
+        $model_name = session('model_name');
+
+        // Get page data content from database
+        $school = session('schoolData');
+        $user = Auth::guard($model_name)->user();
+
+        if ($user->class_teacher != '') {
+            // Those with unposted result 
+            $data = DB::connection($school->school_database)
+                            ->select('SELECT test_results.* FROM students, test_results WHERE students.id = test_results.student_id AND students.name = ?', [$id]);
+        }
+        // Return view with datas
+        return view('teacher.test_result', [
+            'metadata' => $metadata,
+            'school' => session('schoolData'),
+            'user' => Auth::guard($model_name)->user(),
+            'data' => $data,
+        ]);
     }
 
     /**

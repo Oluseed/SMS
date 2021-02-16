@@ -18,10 +18,6 @@ class StudentController extends Controller
             'keywords' => 'Student, Result checker, Information, Student portal, Student data, Student activities',
             'body_pics' => 'body2'
         ];
-
-        if (!$request->session()->has('schoolData')) {
-            return redirect('/select_school');
-        }
         $model_name = session('schoolData')->school_code.'_student';
 
 
@@ -41,10 +37,6 @@ class StudentController extends Controller
             'keywords' => 'Student, Result checker, Student portal, Student data, Student activities, Announcements',
             'body_pics' => 'body2'
         ];
-        // Redirect if session schooldata isset
-        if (!$request->session()->has('schoolData')) {
-            return redirect('/select_school');
-        }
         // Get model_name
         $model_name = session('model_name');
 
@@ -76,10 +68,6 @@ class StudentController extends Controller
             'keywords' => 'Student, Result checker, Student portal, Student data, Student activities, Timetable',
             'body_pics' => 'body2'
         ];
-        // Redirect if session schooldata isset
-        if (!$request->session()->has('schoolData')) {
-            return redirect('/select_school');
-        }
         // Get model_name
         $model_name = session('model_name');
 
@@ -111,10 +99,6 @@ class StudentController extends Controller
             'keywords' => 'Student, Result checker, Student portal, Student data, Student activities',
             'body_pics' => 'body2'
         ];
-        // Redirect if session schooldata isset
-        if (!$request->session()->has('schoolData')) {
-            return redirect('/select_school');
-        }
         // Get model_name
         $model_name = session('model_name');
 
@@ -146,10 +130,6 @@ class StudentController extends Controller
             'keywords' => 'Student, Result checker, Student portal, Student data, Student activities',
             'body_pics' => 'body2'
         ];
-        // Redirect if session schooldata isset
-        if (!$request->session()->has('schoolData')) {
-            return redirect('/select_school');
-        }
         // Get model_name
         $model_name = session('model_name');
 
@@ -181,10 +161,6 @@ class StudentController extends Controller
             'keywords' => 'Student, Result checker, Student portal, Student data, Student activities, Question of the week',
             'body_pics' => 'body2'
         ];
-        // Redirect if session schooldata isset
-        if (!$request->session()->has('schoolData')) {
-            return redirect('/select_school');
-        }
         // Get model_name
         $model_name = session('model_name');
 
@@ -210,11 +186,6 @@ class StudentController extends Controller
 
     public function store_queWeek(Request $request)
     {
-
-        // Redirect if session schooldata isset
-        if (!$request->session()->has('schoolData')) {
-            return redirect('/select_school');
-        }
         // Get model_name
         $model_name = session('model_name');
 
@@ -246,10 +217,6 @@ class StudentController extends Controller
             'keywords' => 'Student, Result checker, Student portal, Student data, Student activities, lesson files',
             'body_pics' => 'body2'
         ];
-        // Redirect if session schooldata isset
-        if (!$request->session()->has('schoolData')) {
-            return redirect('/select_school');
-        }
         // Get model_name
         $model_name = session('model_name');
 
@@ -275,10 +242,6 @@ class StudentController extends Controller
             'keywords' => 'Student, Result checker, Student portal, Student data, Student activities, Question and Answer',
             'body_pics' => 'body2'
         ];
-        // Redirect if session schooldata isset
-        if (!$request->session()->has('schoolData')) {
-            return redirect('/select_school');
-        }
         // Get model_name
         $model_name = session('model_name');
 
@@ -304,11 +267,6 @@ class StudentController extends Controller
 
     public function store_message(Request $request)
     {
-        
-        // Redirect if session schooldata isset
-        if (!$request->session()->has('schoolData')) {
-            return redirect('/select_school');
-        }
         // Get model_name
         $model_name = session('model_name');
 

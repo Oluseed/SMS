@@ -174,27 +174,14 @@
             @if ($data2 != 'empty')
             @if ($data2 != null)
             <div class="intro_box">
-                <h2 style="color:#0c3b79">Select the student name you want to check</h2>
-                
-                <form method="POST" action="{{ route('teacher.test_result') }}" class="form_2" autocomplete="off">
-                    @csrf
-                    <input type="text" name="select-name" list="select-name" required/>
-                    <datalist id="select-name">
-                        @foreach ($data2 as $row)
-                            <option value="{{ $row->name }}">{{ $row->name }}</option>
-                        @endforeach
-                    </datalist>
-                    <br>
-                    <br>
-                    <button type="submit" class="button1">Check Result
-                        <i class="far fa-paper-plane"></i>
-                    </button>
-                </form>
-                <h3 style="color:#0c3b79">The following student's result has been posted.</h3>
+                <h2 style="color:#0c3b79">The following student's result has been posted.</h2>
                 <ul>
                     @foreach ($data2 as $row)
                     <li>
-                        <h5><span style="color:#0c3b79">{{ $loop->iteration }}. </span> {{ $row->name }}</h5>
+                        <h5>
+                            <span style="color:#0c3b79">{{ $loop->iteration }}. </span> 
+                            <a style="text-decoration:none" href="{{ route('teacher.test_result.show', ['id' => $row->name]) }}">{{ $row->name }}</a>
+                        </h5>
                     </li>
                     @endforeach
                 </ul>

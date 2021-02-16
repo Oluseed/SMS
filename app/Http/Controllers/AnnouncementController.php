@@ -18,10 +18,6 @@ class AnnouncementController extends Controller
             'keywords' => 'Teacher, Result checker, Teacher portal, Teacher data, Teacher activities, Announcements',
             'body_pics' => 'body2'
         ];
-        // Redirect if session schooldata isset
-        if (!$request->session()->has('schoolData')) {
-            return redirect('/select_school');
-        }
         // Get model_name
         $model_name = session('model_name');
 
@@ -48,11 +44,6 @@ class AnnouncementController extends Controller
 
     public function store(Request $request) 
     {
-        
-        // Redirect if session schooldata isset
-        if (!$request->session()->has('schoolData')) {
-            return redirect('/select_school');
-        }
         // Get model_name
         $model_name = session('model_name');
 
@@ -81,10 +72,6 @@ class AnnouncementController extends Controller
             'keywords' => 'Teacher, Result checker, Teacher portal, Teacher data, Teacher activities, Announcements',
             'body_pics' => 'body2'
         ];
-        // Redirect if session schooldata isset
-        if (!$request->session()->has('schoolData')) {
-            return redirect('/select_school');
-        }
         // Get model_name
         $model_name = session('model_name');
 
@@ -116,10 +103,6 @@ class AnnouncementController extends Controller
 
     public function update(Request $request, $id) 
     {
-        // Redirect if session schooldata isset
-        if (!$request->session()->has('schoolData')) {
-            return redirect('/select_school');
-        }
         // Get model_name
         $model_name = session('model_name');
 
@@ -146,10 +129,6 @@ class AnnouncementController extends Controller
 
     public function destroy(Request $request, $id) 
     {
-        // Redirect if session schooldata isset
-        if (!$request->session()->has('schoolData')) {
-            return redirect('/select_school');
-        }
         // Get model_name
         $model_name = session('model_name');
 

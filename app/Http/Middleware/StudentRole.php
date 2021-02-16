@@ -18,7 +18,7 @@ class StudentRole
     public function handle(Request $request, Closure $next)
     {
         if (!$request->session()->has('schoolData')) {
-            return redirect()->url('/select_school');
+            return redirect('/select_school');
         }
         $school = session('schoolData')->school_code;
         $name = $school.'_student';

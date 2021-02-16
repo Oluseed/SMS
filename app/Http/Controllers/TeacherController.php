@@ -10,17 +10,14 @@ use App\Http\Controllers\Controller;
 
 class TeacherController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         $metadata = [
             'title' => '| TEACHER PORTAL',
             'description' => 'Welcome to your teacher portal at Students Result Management System',
             'keywords' => 'Teacher, Result checker, Information, Teacher portal, Teacher data, Teacher activities',
             'body_pics' => 'body2'
         ];
-
-        if (!$request->session()->has('schoolData')) {
-            return redirect('/select_school');
-        }
         $model_name = session('schoolData')->school_code.'_teacher';
 
 
