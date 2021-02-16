@@ -181,7 +181,7 @@ class TestController extends Controller
             'metadata' => $metadata,
             'school' => session('schoolData'),
             'user' => Auth::guard($model_name)->user(),
-            'data' => $data,
+            'data' => $data
         ]);
     }
 
