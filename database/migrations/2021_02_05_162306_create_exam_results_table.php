@@ -13,9 +13,11 @@ class CreateExamResultsTable extends Migration
      */
     public function up()
     {
-        Schema::connection('anc_srms')->create('exam_results', function (Blueprint $table) {
+        Schema::connection('amc_srms')->create('exam_results', function (Blueprint $table) {
             $table->id();
             $table->string('student_id');
+            $table->string('class');
+            $table->string('term_session');
             $table->string('sub1')->nullable();
             $table->string('sub2')->nullable();
             $table->string('sub3')->nullable();
@@ -31,6 +33,7 @@ class CreateExamResultsTable extends Migration
             $table->string('sub13')->nullable();
             $table->string('sub14')->nullable();
             $table->string('sub15')->nullable();
+            $table->longText('comment')->nullable();
             $table->timestamps();
         });
     }

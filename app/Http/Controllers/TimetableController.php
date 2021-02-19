@@ -95,11 +95,8 @@ class TimetableController extends Controller
         } else {
             $sss3s = '';
         }
-        if (isset($show)) {
-            $show = 'true';
-        } else {
-            $show = 'false';
-        }
+        $show = (isset($show)) ? 'true' : 'false';
+        
         // Return view with datas
         return view('teacher.timetable', [
             'metadata' => $metadata,

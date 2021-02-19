@@ -14,7 +14,7 @@ class CreateSchoolsTable extends Migration
      */
     public function up()
     {
-        Schema::connection('anc_srms')->create('schools', function (Blueprint $table) {
+        Schema::connection('srms')->create('schools', function (Blueprint $table) {
             $table->id();
             $table->string('school_name')->unique();
             $table->string('school_code')->unique();

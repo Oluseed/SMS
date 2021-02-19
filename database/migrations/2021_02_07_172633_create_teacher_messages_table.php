@@ -13,7 +13,7 @@ class CreateTeacherMessagesTable extends Migration
      */
     public function up()
     {
-        Schema::connection('anc_srms')->create('teacher_messages', function (Blueprint $table) {
+        Schema::connection('amc_srms')->create('teacher_messages', function (Blueprint $table) {
             $table->id();
             $table->string('teacher_id');
             $table->string('student_id');

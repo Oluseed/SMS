@@ -35,13 +35,13 @@
                         <br/>
                         <span>TEST RESULTS</span>
                     </a>
-                    <a href="{{ route('teacher.test_result') }}" class="nav_box right">
+                    <a href="{{ route('teacher.exam_result') }}" class="nav_box right">
                         <i class="far fa-map" aria-hidden="true"></i>
                         <br/>
                         <br/>
                         <span>EXAM RESULTS</span>
                     </a>
-                    <a href="queWeek.html" class="nav_box left">
+                    <a href="{{ route('teacher.queWeek') }}" class="nav_box left">
                         <i class="far fa-question-circle" aria-hidden="true"></i>
                         <br/>
                         <br/>

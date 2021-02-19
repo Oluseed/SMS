@@ -45,12 +45,8 @@ class StudentController extends Controller
         $data = DB::connection($school->school_database)
                         ->select('SELECT announcements.*, teachers.name FROM announcements, teachers WHERE announcements.teacher_id = teachers.id ORDER BY announcements.created_at DESC');
         
-        if ($data != []) {
-            $datas = $data;
-        } 
-        else {
-            $datas = '';
-        }
+        $datas = ($data != []) ? $data : '';
+
         // Return view with datas
         return view('student.announcement', [
             'metadata' => $metadata,
@@ -77,11 +73,8 @@ class StudentController extends Controller
         $data = DB::connection($school->school_database)
                         ->select('SELECT * FROM timetables WHERE class = ?', [$user->class]);
 
-        if ($data != []) {
-            $datas = $data;
-        } else {
-            $datas = '';
-        }
+        $datas = ($data != []) ? $data : '';
+
         // Return view with datas
         return view('student.timetable', [
             'metadata' => $metadata,
@@ -108,11 +101,8 @@ class StudentController extends Controller
         $data = DB::connection($school->school_database)
                         ->select('SELECT * FROM test_results WHERE student_id = '.$user->id);
         
-        if ($data != []) {
-            $datas = $data[0];
-        } else {
-            $datas = '';
-        }
+        $datas = ($data != []) ? $data : '';
+
         // Return view with datas
         return view('student.test_result', [
             'metadata' => $metadata,
@@ -139,11 +129,8 @@ class StudentController extends Controller
         $data = DB::connection($school->school_database)
                         ->select('SELECT * FROM exam_results WHERE student_id = '.$user->id);
         
-        if ($data != []) {
-            $datas = $data[0];
-        } else {
-            $datas = '';
-        }
+        $datas = ($data != []) ? $data : '';
+
         // Return view with datas
         return view('student.exam_result', [
             'metadata' => $metadata,
@@ -170,11 +157,8 @@ class StudentController extends Controller
         $data = DB::connection($school->school_database)
                         ->select('SELECT * FROM queweek_show WHERE class = ?', [$user->class]);
         
-        if ($data != []) {
-            $datas = $data;
-        } else {
-            $datas = '';
-        }
+        $datas = ($data != []) ? $data : '';
+
         // Return view with datas
         return view('student.queWeek', [
             'metadata' => $metadata,
@@ -251,11 +235,8 @@ class StudentController extends Controller
         $data = DB::connection($school->school_database)
                         ->select('SELECT * FROM teacher_messages WHERE student_id = ?', [$user->id]);
         
-        if ($data != []) {
-            $datas = $data;
-        } else {
-            $datas = '';
-        }
+        $datas = ($data != []) ? $data : '';
+        
         // Return view with datas
         return view('student.message', [
             'metadata' => $metadata,

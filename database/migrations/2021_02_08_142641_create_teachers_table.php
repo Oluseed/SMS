@@ -13,7 +13,7 @@ class CreateTeachersTable extends Migration
      */
     public function up()
     {
-        Schema::connection('anc_srms')->create('teachers', function (Blueprint $table) {
+        Schema::connection('amc_srms')->create('teachers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('regno')->unique();

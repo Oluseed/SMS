@@ -24,13 +24,10 @@ class AnnouncementController extends Controller
         // Get page data content from database
         $school = session('schoolData');
         $data = DB::connection($school->school_database)
-                        ->select('SELECT announcements.*, teachers.name FROM announcements, teachers WHERE announcements.teacher_id = teachers.id ORDER BY announcements.created_at DESC');
+                        ->select('SELECT announcements.*, teachers.name FROM announcements, teachers 
+                                WHERE announcements.teacher_id = teachers.id ORDER BY announcements.created_at DESC');
         
-        if ($data != []) {
-            $datas = $data;
-        } else {
-            $datas = '';
-        }
+        $datas = ($data != []) ? $data : '';
 
         // Return view with datas
         return view('teacher.announcement', [
@@ -85,11 +82,7 @@ class AnnouncementController extends Controller
         $data = DB::connection($school->school_database)
                         ->select('SELECT announcements.*, teachers.name FROM announcements, teachers WHERE announcements.teacher_id = teachers.id ORDER BY announcements.created_at DESC');
         
-        if ($data != []) {
-            $datas = $data;
-        } else {
-            $datas = '';
-        }
+        $datas = ($data != []) ? $data : '';
 
         // Return view with datas
         return view('teacher.announcement', [

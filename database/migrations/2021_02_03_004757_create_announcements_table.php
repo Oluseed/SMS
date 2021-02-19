@@ -13,7 +13,7 @@ class CreateAnnouncementsTable extends Migration
      */
     public function up()
     {
-        Schema::connection('anc_srms')->create('announcements', function (Blueprint $table) {
+        Schema::connection('amc_srms')->create('announcements', function (Blueprint $table) {
             $table->id();
             $table->integer('teacher_id');
             $table->string('class');

@@ -7,6 +7,8 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\TimetableController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\ExamController;
+use App\Http\Controllers\QueWeekController;
 use App\Http\Controllers\Auth\AuthenticatedStudentSessionController;
 use App\Http\Controllers\Auth\AuthenticatedTeacherSessionController;
 
@@ -111,10 +113,45 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'TeacherRole'], function ()
 
         Route::get('/{id}/edit', [TestController::class, 'edit']);
 
-        Route::put('/{id}/{class}', [TestController::class, 'update'])
+        Route::put('/{name}/{class}', [TestController::class, 'update'])
                     ->name('teacher.test_result.update');
 
-        Route::delete('/{class}/delete', [TestController::class, 'destroy']);
+        Route::delete('/{name}/delete', [TestController::class, 'destroy']);
+    });
+
+    Route::prefix('exam_result')->group(function () {
+        Route::get('/', [ExamController::class, 'index'])
+                    ->name('teacher.exam_result');
+
+        Route::post('/', [ExamController::class, 'store'])
+                    ->name('teacher.exam_result');
+
+        Route::get('/check_result/{id}', [ExamController::class, 'show'])
+                    ->name('teacher.exam_result.show');
+
+        Route::get('/{id}/edit', [ExamController::class, 'edit']);
+
+        Route::put('/{name}/{class}', [ExamController::class, 'update'])
+                    ->name('teacher.exam_result.update');
+
+        Route::delete('/{name}/delete', [ExamController::class, 'destroy']);
+    });
+
+    Route::prefix('question_of_the_week')->group(function () {
+        Route::get('/', [QueWeekController::class, 'index'])
+                    ->name('teacher.queWeek');
+
+        Route::post('/', [QueWeekController::class, 'store'])
+                    ->name('teacher.queWeek');
+
+        Route::get('/{id}/edit', [QueWeekController::class, 'edit'])
+                    ->name('teacher.queWeek.edit');;
+
+        Route::put('/{id}', [QueWeekController::class, 'update'])
+                    ->name('teacher.queWeek.update');
+
+        Route::delete('/{id}/delete', [QueWeekController::class, 'delete'])
+                    ->name('teacher.queWeek.delete');
     });
 });
 

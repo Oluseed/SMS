@@ -13,7 +13,7 @@ class CreateQueweekPostTable extends Migration
      */
     public function up()
     {
-        Schema::connection('anc_srms')->create('queweek_post', function (Blueprint $table) {
+        Schema::connection('amc_srms')->create('queweek_post', function (Blueprint $table) {
             $table->id();
             $table->string('subject');
             $table->string('teacher_id');

@@ -18,11 +18,11 @@
 @section('content')
                 <article class="content_box">
                     <div class="head">
-                        <i class="far fa-table" aria-hidden="true"></i><b>  Test Results</b>
+                        <i class="far fa-table" aria-hidden="true"></i><b>  Exam Results</b>
                         <br>
                         <br>
                         <span style="font-size:20px;font-weight:500">{{ $data->name }}</span>
-                        <form method="POST" action="{{ url('/teacher/test_result/'.$data->name.'/delete') }}" style="display:inline">
+                        <form method="POST" action="{{ url('/teacher/exam_result/'.$data->name.'/delete') }}" style="display:inline">
                             @csrf
                             @method('DELETE')
                             <input type="hidden" name="row_id" value="{{ $data->id }}" required/>
@@ -30,7 +30,7 @@
                                 <i class="far fa-trash-alt" aria-hidden="true"></i>
                             </button>
                         </form>
-                        <form method="GET" action="{{ url('/teacher/test_result/'.$data->id.'/edit') }}" style="display:inline">
+                        <form method="GET" action="{{ url('/teacher/exam_result/'.$data->id.'/edit') }}" style="display:inline">
                             <button type="submit" class="button2" style="background:#9b850bff;">Edit
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             </button>
@@ -41,9 +41,10 @@
                         <tr>
                             <th> S/N </th>
                             <th>Subject</th>
-                            <th>1<sup>st</sup>Test Score</th>
-                            <th>2<sup>nd</sup> Test Score</th>
+                            <th>Test Score</th>
+                            <th>Exam Score</th>
                             <th>Total Score</th>
+                            <th>Grade</th>
                         </tr>
                         @if ($data != '')
                         @if ($data->sub1)
