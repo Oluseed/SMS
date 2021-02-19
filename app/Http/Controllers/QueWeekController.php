@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\School;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Illuminate\Pagination\LengthAwarePaginator;
 use App\Http\Controllers\Controller;
 
 class QueWeekController extends Controller
@@ -30,12 +32,28 @@ class QueWeekController extends Controller
         // Get page data content from database
         $school = session('schoolData');
         $data = DB::connection($school->school_database)
-                        ->select('SELECT queweek_show.*, teachers.name, teachers.class_teacher FROM queweek_show, teachers WHERE
-                                (queweek_show.class = ? OR queweek_show.teacher_id = ?) AND queweek_show.teacher_id = teachers.id ORDER BY queweek_show.created_at DESC', [
+                        ->select('SELECT queweek_show.*, teachers.name, teachers.class_teacher FROM queweek_show, teachers 
+                                WHERE (queweek_show.class = ? OR queweek_show.teacher_id = ?) 
+                                AND queweek_show.teacher_id = teachers.id ORDER BY queweek_show.created_at DESC', [
                                     $user->class_teacher,
                                     $user->id
-                                    ]);
+                                ]);//->SimplePaginate(2);
+        $data2 = DB::connection($school->school_database)
+                        ->table(['queweek_show', 'teachers'])
+                        ->select('id', 'subject', 'teacher_id', 'class', 'question', 'teachers.name', 'teachers.class_teacher')
+                        ->where(function($query, Closure $user) {
+                            $query->where('queweek_show.class', $user->class_teacher)
+                                  ->orWhere('queweek_show.teacher_id', $user->id);
+                        })
+                        ->where('queweek_show.teacher_id', 'teachers.id')
+                        ->get();dd($data2);
         $datas = ($data != []) ? $data : '';
+
+        if ($datas != []) {
+            foreach ($datas as $row) {
+                $row->question = Str::of($row->question)->words(20);
+            }
+        }
 
         // Return view with datas
         return view('teacher.queWeek', [

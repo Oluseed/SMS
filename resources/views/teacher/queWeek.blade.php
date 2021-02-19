@@ -104,9 +104,15 @@
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                 </button>
                             </form>
-                            <br>
-                            <br>
                             @endif
+                            <form method="GET" action="{{ route('teacher.queWeek.show', ['id' => $row->id]) }}" style="display:inline">
+                                @csrf
+                                <button type="submit" class="button4" style="background:#0c3b79;">Open 
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </button>
+                            </form>
+                            <br>
+                            <br>
                             <div class="right" style="display:block">From: 
                                 <span class="capitalize" style="color:#0c3b79">{{ $row->name }}</span>
                             </div>
@@ -114,6 +120,7 @@
                             <li>{!! $row->question !!}</li>
                             @endforeach
                         </ul>
+                        {{--$data->links()--}}
                         @else
                         <div class="head">
                             <span style="color:red;" class="capitalize">No Question Has Been Posted yet.</span>

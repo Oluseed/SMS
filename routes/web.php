@@ -144,6 +144,9 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'TeacherRole'], function ()
         Route::post('/', [QueWeekController::class, 'store'])
                     ->name('teacher.queWeek');
 
+        Route::get('/check_question/{id}', [QueWeekController::class, 'show'])
+                    ->name('teacher.queWeek.show');
+
         Route::get('/{id}/edit', [QueWeekController::class, 'edit'])
                     ->name('teacher.queWeek.edit');;
 
