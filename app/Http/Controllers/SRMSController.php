@@ -28,7 +28,7 @@ class SRMSController extends Controller
             $request->session()->regenerateToken();
         }
 
-        return view('index', ['metadata' => $metadata]);
+        return view('index-test', ['metadata' => $metadata]);
     }
 
     public function show_school(Request $request){

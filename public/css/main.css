@@ -717,6 +717,29 @@ body{
 
 
 
+/* New test design */
+.flex-container {
+    display: flex;
+    margin: 25px auto;
+    padding: 10px;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+.flex-box {
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #000000;
+    width: 40%;
+    max-width: 600px;
+    margin: 5px auto;
+    padding: 40px 10px;
+}
+
+
+
+
+
+
 
 
 @media(max-width:600px){

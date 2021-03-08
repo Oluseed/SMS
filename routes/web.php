@@ -83,7 +83,7 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'TeacherRole'], function ()
 
         Route::put('/{id}', [AnnouncementController::class, 'update']);
 
-        Route::delete('/{id}/delete', [AnnouncementController::class, 'delete']);
+        Route::delete('/{id}/delete', [AnnouncementController::class, 'destroy']);
     });
 
     Route::prefix('timetable')->group(function () {
