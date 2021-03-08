@@ -43,7 +43,7 @@ class ExamController extends Controller
                             ]);
         }
         // Return view with datas
-        return view('teacher.exam_result', [
+        return view('teacher.exam.exam_result', [
             'metadata' => $metadata,
             'school' => session('schoolData'),
             'user' => Auth::guard($model_name)->user(),
@@ -178,7 +178,7 @@ class ExamController extends Controller
                                 'name' => $id]);
         }
         // Return view with datas
-        return view('teacher.exam_result_show', [
+        return view('teacher.exam.exam_result_show', [
             'metadata' => $metadata,
             'school' => session('schoolData'),
             'user' => Auth::guard($model_name)->user(),
@@ -265,7 +265,7 @@ class ExamController extends Controller
                         'sub11', 'sub12', 'sub13', 'sub14', 'sub15');
         
         // Return view with datas
-        return view('teacher.exam_result_edit', [
+        return view('teacher.exam.exam_result_edit', [
             'metadata' => $metadata,
             'school' => session('schoolData'),
             'user' => Auth::guard($model_name)->user(),

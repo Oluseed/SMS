@@ -98,7 +98,7 @@ class TimetableController extends Controller
         $show = (isset($show)) ? 'true' : 'false';
         
         // Return view with datas
-        return view('teacher.timetable', [
+        return view('teacher.timetable.timetable', [
             'metadata' => $metadata,
             'school' => session('schoolData'),
             'user' => Auth::guard($model_name)->user(),
@@ -230,7 +230,7 @@ class TimetableController extends Controller
      
         // });
         // Redirect
-        return redirect(route('teacher.timetable'));
+        return redirect()->route('teacher.timetable');
     }
 
     /**
@@ -261,7 +261,7 @@ class TimetableController extends Controller
                         ->select('SELECT * FROM timetables WHERE class = ?', [$class[0]->class]);
         
         // Return view with datas
-        return view('teacher.timetable_edit', [
+        return view('teacher.timetable.timetable_edit', [
             'metadata' => $metadata,
             'school' => session('schoolData'),
             'user' => Auth::guard($model_name)->user(),

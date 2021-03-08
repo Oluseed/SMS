@@ -59,7 +59,7 @@ class QueWeekController extends Controller
         }
 
         // Return view with datas
-        return view('teacher.queWeek', [
+        return view('teacher.queWeek.queWeek', [
             'metadata' => $metadata,
             'school' => session('schoolData'),
             'user' => Auth::guard($model_name)->user(),
@@ -141,7 +141,7 @@ class QueWeekController extends Controller
                         ->select('SELECT * FROM queweek_show WHERE id = ?', [$id]);
         
         // Return view with datas
-        return view('teacher.queWeek_show', [
+        return view('teacher.queWeek.queWeek_show', [
             'metadata' => $metadata,
             'school' => session('schoolData'),
             'user' => Auth::guard($model_name)->user(),
@@ -190,7 +190,7 @@ class QueWeekController extends Controller
                                 ]);
 
         // Return view with datas
-        return view('teacher.queWeek', [
+        return view('teacher.queWeek.queWeek', [
             'metadata' => $metadata,
             'school' => session('schoolData'),
             'user' => Auth::guard($model_name)->user(),

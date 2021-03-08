@@ -30,7 +30,7 @@ class AnnouncementController extends Controller
         $datas = ($data != []) ? $data : '';
 
         // Return view with datas
-        return view('teacher.announcement', [
+        return view('teacher.announcement.announcement', [
             'metadata' => $metadata,
             'school' => session('schoolData'),
             'user' => Auth::guard($model_name)->user(),
@@ -58,7 +58,7 @@ class AnnouncementController extends Controller
                         ->insert('INSERT INTO announcements (teacher_id, class, title, story) VALUES (?, ?, ?, ?)', [$teacher_id, $recipient, $title, $story]);
         
         // Redirect
-        return redirect(route('teacher.announcement'));
+        return redirect()->route('teacher.announcement');
     }
 
     public function edit(Request $request, $id)
@@ -85,7 +85,7 @@ class AnnouncementController extends Controller
         $datas = ($data != []) ? $data : '';
 
         // Return view with datas
-        return view('teacher.announcement', [
+        return view('teacher.announcement.announcement', [
             'metadata' => $metadata,
             'school' => session('schoolData'),
             'user' => Auth::guard($model_name)->user(),
@@ -117,7 +117,7 @@ class AnnouncementController extends Controller
                         ]);
         
         // Redirect 
-        return redirect(route('teacher.announcement'));
+        return redirect()->route('teacher.announcement');
     }
 
     public function destroy(Request $request, $id) 
@@ -133,6 +133,6 @@ class AnnouncementController extends Controller
                         ->delete('DELETE FROM announcements WHERE id = ?', [$id]);
         
         // Redirect 
-        return redirect(route('teacher.announcement'));
+        return redirect()->route('teacher.announcement');
     }
 }

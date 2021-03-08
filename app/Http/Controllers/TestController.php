@@ -43,7 +43,7 @@ class TestController extends Controller
                             ]);
         }
         // Return view with datas
-        return view('teacher.test_result', [
+        return view('teacher.test.test_result', [
             'metadata' => $metadata,
             'school' => session('schoolData'),
             'user' => Auth::guard($model_name)->user(),
@@ -178,7 +178,7 @@ class TestController extends Controller
                                 'name' => $id]);
         }
         // Return view with datas
-        return view('teacher.test_result_show', [
+        return view('teacher.test.test_result_show', [
             'metadata' => $metadata,
             'school' => session('schoolData'),
             'user' => Auth::guard($model_name)->user(),
@@ -263,7 +263,7 @@ class TestController extends Controller
         $data = compact('name', 'class', 'sub1', 'sub2', 'sub3', 'sub4', 'sub5', 'sub6', 'sub7', 'sub8', 'sub9', 'sub10', 'sub11', 'sub12', 'sub13', 'sub14', 'sub15');
         
         // Return view with datas
-        return view('teacher.test_result_edit', [
+        return view('teacher.test.test_result_edit', [
             'metadata' => $metadata,
             'school' => session('schoolData'),
             'user' => Auth::guard($model_name)->user(),
