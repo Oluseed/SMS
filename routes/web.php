@@ -148,12 +148,12 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'TeacherRole'], function ()
                     ->name('teacher.queWeek.show');
 
         Route::get('/{id}/edit', [QueWeekController::class, 'edit'])
-                    ->name('teacher.queWeek.edit');;
+                    ->name('teacher.queWeek.edit');
 
         Route::put('/{id}', [QueWeekController::class, 'update'])
                     ->name('teacher.queWeek.update');
 
-        Route::delete('/{id}/delete', [QueWeekController::class, 'delete'])
+        Route::delete('/{id}/delete', [QueWeekController::class, 'destroy'])
                     ->name('teacher.queWeek.delete');
     });
 });

@@ -49,7 +49,7 @@
   						</button>
                     </form>
                     @else
-                    <form method="POST" action="{{ route('teacher.queWeek.update', ['id' => $form_id]) }}" class="form_4" autocomplete="off">
+                    <form method="POST" action="{{ route('teacher.queWeek.update', ['id' => $form->id]) }}" class="form_4" autocomplete="off">
                         @csrf
                         @method('PUT')
                         <label for="class"> Select Class*</label>
@@ -70,10 +70,10 @@
                         <input type="text" name="subject" value="{{ $form->subject }}" required/>
                         <br/>
                         <br/>
-                        <label for="Question">Question*</label>
+                        <label for="Story">Question*</label>
                         <br/>
                         <textarea name="question" rows="8" placeholder="Type your question..." required>{{ $form->question }}</textarea>
-                        <button class="button3" type="submit">Update Question
+                        <button class="button3" type="submit">Post Question
   						    <i class="far fa-paper-plane"></i>
   						</button>
                     </form>
@@ -86,6 +86,7 @@
                     <article class="content_box">
                         @if ($data != '')
                         <div class="head">
+                            <div style="color:red">{{ $message }}</div>
                             <i class="fas fa-bullhorn" aria-hidden="true"></i><b> Question Of The Week</b>
                         </div>
                         <ul>

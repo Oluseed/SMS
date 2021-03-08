@@ -31,6 +31,8 @@ class QueWeekController extends Controller
 
         // Get page data content from database
         $school = session('schoolData');
+        $class = $user->class_teacher;
+        $user_id = $user->id;
         $data = DB::connection($school->school_database)
                         ->select('SELECT queweek_show.*, teachers.name, teachers.class_teacher FROM queweek_show, teachers 
                                 WHERE (queweek_show.class = ? OR queweek_show.teacher_id = ?) 
@@ -38,15 +40,16 @@ class QueWeekController extends Controller
                                     $user->class_teacher,
                                     $user->id
                                 ]);//->SimplePaginate(2);
-        $data2 = DB::connection($school->school_database)
-                        ->table(['queweek_show', 'teachers'])
-                        ->select('id', 'subject', 'teacher_id', 'class', 'question', 'teachers.name', 'teachers.class_teacher')
-                        ->where(function($query, Closure $user) {
-                            $query->where('queweek_show.class', $user->class_teacher)
-                                  ->orWhere('queweek_show.teacher_id', $user->id);
-                        })
-                        ->where('queweek_show.teacher_id', 'teachers.id')
-                        ->get();dd($data2);
+        // $data2 = DB::connection($school->school_database)
+                        // ->table('queweek_show')
+                        // ->join('teachers')
+                        // ->select('queweek_show.*', 'teachers.name', 'teachers.class_teacher')
+                        // ->where(function($query) use ($class, $user_id) {
+                        //     $query->where('queweek_show.class', $class)
+                        //         ->orWhere('queweek_show.teacher_id', $user_id);
+                        // })
+                        // ->where('queweek_show.teacher_id', 'teachers.id')
+                        // ->get()->dd();
         $datas = ($data != []) ? $data : '';
 
         if ($datas != []) {
@@ -61,7 +64,8 @@ class QueWeekController extends Controller
             'school' => session('schoolData'),
             'user' => Auth::guard($model_name)->user(),
             'form' => '',
-            'data' => $datas
+            'data' => $datas,
+            'message' => session('message') ?? ''
         ]);
     }
 
@@ -83,7 +87,28 @@ class QueWeekController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Get model_name
+        $model_name = session('model_name');
+
+        // Get page data content from database
+        $school = session('schoolData');
+        $user = Auth::guard($model_name)->user();
+        
+        // Get Data And Insert
+        $subject = $request->input('subject');
+        $teacher_id = $user->id;
+        $class = $request->input('class');
+        $question = $request->input('question');
+
+        DB::connection($school->school_database)
+                        ->insert('INSERT INTO queweek_show (subject, teacher_id, class, question) 
+                                VALUES (?, ?, ?, ?)', [$subject, $teacher_id, $class, $question]);
+        
+        $data = DB::connection($school->school_database)
+                    ->select('SELECT MAX(id) AS id FROM queweek_show');
+
+        // Redirect
+        return redirect()->route('teacher.queWeek.show', ['id' => $data[0]->id]);
     }
 
     /**
@@ -94,7 +119,35 @@ class QueWeekController extends Controller
      */
     public function show($id)
     {
-        //
+        $metadata = [
+            'title' => '| TEACHER PORTAL',
+            'description' => 'View and check Question of the week on your teacher portal at Students Result Management System',
+            'keywords' => 'Teacher, Result checker, Teacher portal, Teacher data, Question, Week, Check, Show, View',
+            'body_pics' => 'body2'
+        ];
+        // Get model_name
+        $model_name = session('model_name');
+
+        // Get page data content from database
+        $school = session('schoolData');
+        $user = Auth::guard($model_name)->user();
+        
+        // Redirect if id != set
+        if (empty($id)) {
+            return redirect()->route('teacher.queWeek');
+        }
+        // Get page data content from database
+        $datas = DB::connection($school->school_database)
+                        ->select('SELECT * FROM queweek_show WHERE id = ?', [$id]);
+        
+        // Return view with datas
+        return view('teacher.queWeek_show', [
+            'metadata' => $metadata,
+            'school' => session('schoolData'),
+            'user' => Auth::guard($model_name)->user(),
+            'data' => $datas[0],
+            'message' => session('message') ?? ''
+        ]);
     }
 
     /**
@@ -105,7 +158,46 @@ class QueWeekController extends Controller
      */
     public function edit($id)
     {
-        //
+        $metadata = [
+            'title' => '| TEACHER PORTAL',
+            'description' => 'Edit and post Question of the week on your teacher portal at Students Result Management System',
+            'keywords' => 'Teacher, Result checker, Teacher portal, Teacher data, Teacher activities, Question, Week, edit',
+            'body_pics' => 'body2'
+        ];
+        // Get model_name
+        $model_name = session('model_name');
+        $user = Auth::guard($model_name)->user();
+
+        // Get page data content from database
+        $school = session('schoolData');
+        $class = $user->class_teacher;
+        $user_id = $user->id;
+
+        // Redirect if id != set
+        if (empty($id)) {
+            return redirect()->route('teacher.queWeek');
+        }
+
+        $form = DB::connection($school->school_database)
+                        ->select('SELECT * FROM queweek_show WHERE id = ?', [$id]);
+
+        $datas = DB::connection($school->school_database)
+                        ->select('SELECT queweek_show.*, teachers.name, teachers.class_teacher FROM queweek_show, teachers 
+                                WHERE (queweek_show.class = ? OR queweek_show.teacher_id = ?) 
+                                AND queweek_show.teacher_id = teachers.id ORDER BY queweek_show.created_at DESC', [
+                                    $user->class_teacher,
+                                    $user->id
+                                ]);
+
+        // Return view with datas
+        return view('teacher.queWeek', [
+            'metadata' => $metadata,
+            'school' => session('schoolData'),
+            'user' => Auth::guard($model_name)->user(),
+            'form' => $form[0],
+            'data' => $datas,
+            'message' => session('message') ?? ''
+        ]);
     }
 
     /**
@@ -117,7 +209,30 @@ class QueWeekController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Get model_name
+        $model_name = session('model_name');
+
+        // Get page data content from database
+        $school = session('schoolData');
+        $user = Auth::guard($model_name)->user();
+        
+        // Get Data And Insert
+        $subject = $request->input('subject');
+        $class = $request->input('class');
+        $question = $request->input('question');
+
+        DB::connection($school->school_database)
+                        ->update('UPDATE queweek_show SET subject = :subject, teacher_id =:teacher_id, class = :class, question = :question 
+                            WHERE id =:id', [
+                            'subject' => $subject,
+                            'teacher_id' => $user->id,
+                            'class' => $class,
+                            'question' => $question,
+                            'id' => $id
+                        ]);
+        
+        // Redirect 
+        return redirect()->route('teacher.queWeek')->with('message', 'Question Updated Successfully!!!');
     }
 
     /**
@@ -126,8 +241,19 @@ class QueWeekController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        // Get model_name
+        $model_name = session('model_name');
+
+        // Get page data content from database
+        $school = session('schoolData');
+        $user = Auth::guard($model_name)->user();
+        
+        DB::connection($school->school_database)
+                        ->delete('DELETE FROM queweek_show WHERE id = ?', [$id]);
+        
+        // Redirect 
+        return redirect()->route('teacher.queWeek')->with('message', 'The Delete Request Is Successful!!!');
     }
 }
