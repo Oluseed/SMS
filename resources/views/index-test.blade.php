@@ -11,7 +11,7 @@
             
             <nav id="nav">
                 <div>
-                <a href="/select_school" class="nav_box left" title="Choose Your School">
+                <a href="/select_school" class="nav_box left" title="Choose Your School here">
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     <br/>
                     <br/>
