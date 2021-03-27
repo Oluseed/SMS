@@ -21,7 +21,7 @@ class AuthenticatedTeacherSessionController extends Controller
         $metadata = [
             'title' => '| TEACHER LOGIN',
             'description' => 'Login to your teacher portal at Students Result Management System',
-            'keywords' => 'Teacher, Result checker, Teacher login, Login page, Teacher form'
+            'keywords' => 'SMS, Teacher, Result checker, Teacher login, Login page, Teacher form'
         ];
 
         if (!$request->session()->has('schoolData')) {

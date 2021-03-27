@@ -15,7 +15,7 @@ class TeacherController extends Controller
         $metadata = [
             'title' => '| TEACHER PORTAL',
             'description' => 'Welcome to your teacher portal at Students Result Management System',
-            'keywords' => 'Teacher, Result checker, Information, Teacher portal, Teacher data, Teacher activities',
+            'keywords' => 'SMS, Teacher, Result checker, Information, Teacher portal, Teacher data, Teacher activities',
             'body_pics' => 'body2'
         ];
         $model_name = session('schoolData')->school_code.'_teacher';

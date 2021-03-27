@@ -20,7 +20,7 @@ class TimetableController extends Controller
         $metadata = [
             'title' => '| TEACHER PORTAL',
             'description' => 'Post and check timetables on your teacher portal at Students Result Management System',
-            'keywords' => 'Teacher, Result checker, Teacher portal, Teacher data, Teacher activities, Timetables',
+            'keywords' => 'SMS, Teacher, Result checker, Teacher portal, Teacher data, Teacher activities, Timetables',
             'body_pics' => 'body2'
         ];
         // Get model_name
@@ -244,7 +244,7 @@ class TimetableController extends Controller
         $metadata = [
             'title' => '| TEACHER PORTAL',
             'description' => 'Edit timetable on your teacher portal at Students Result Management System',
-            'keywords' => 'Teacher, Result checker, Teacher portal, Teacher data, Teacher activities, Timetables',
+            'keywords' => 'SMS, Teacher, Result checker, Teacher portal, Teacher data, Teacher activities, Timetables',
             'body_pics' => 'body2'
         ];
         // Get model_name

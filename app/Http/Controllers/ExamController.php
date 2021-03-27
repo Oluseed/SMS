@@ -20,7 +20,7 @@ class ExamController extends Controller
         $metadata = [
             'title' => '| TEACHER PORTAL',
             'description' => 'Check and post exam result on your teacher portal at Students Result Management System',
-            'keywords' => 'Teacher, Result checker, Teacher portal, Student data, Student activities, Exam Result',
+            'keywords' => 'SMS, Teacher, Result checker, Teacher portal, Student data, Student activities, Exam Result',
             'body_pics' => 'body2'
         ];
         // Get model_name
@@ -162,7 +162,7 @@ class ExamController extends Controller
         $metadata = [
             'title' => '| TEACHER PORTAL',
             'description' => 'Check and post exam result on your teacher portal at Students Result Management System',
-            'keywords' => 'Teacher, Result checker, Teacher portal, Student data, Student activities, Exam Result',
+            'keywords' => 'SMS, Teacher, Result checker, Teacher portal, Student data, Student activities, Exam Result',
             'body_pics' => 'body2'
         ];
         // Get model_name
@@ -197,7 +197,7 @@ class ExamController extends Controller
         $metadata = [
             'title' => '| TEACHER PORTAL',
             'description' => 'Edit and post exam result on your teacher portal at Students Result Management System',
-            'keywords' => 'Teacher, Result checker, Teacher portal, Student data, Student activities, Exam Result Edit',
+            'keywords' => 'SMS, Teacher, Result checker, Teacher portal, Student data, Student activities, Exam Result Edit',
             'body_pics' => 'body2'
         ];
         // Get model_name

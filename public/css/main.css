@@ -161,6 +161,12 @@ body{
     text-decoration: none;
     word-wrap:break-word;
 }
+
+#nav div .nav_box:hover{
+    border: 3.5px solid #fff;
+    background: #0c3b79;
+    color: #fff;
+}
 }
 
 #nav div .left{
@@ -168,11 +174,6 @@ body{
 }
 #nav div .right{
     float: right;
-}
-#nav div .nav_box:hover{
-    border: 3.5px solid #fff;
-    background: #0c3b79;
-    color: #fff;
 }
 
 #nav div .nav_box i{
@@ -743,6 +744,9 @@ body{
 
 
 @media(max-width:600px){
+    body{
+        font-size: 14px;
+    }
     #header{
         min-height: 50px;
         border-bottom: 2px solid #fff;
@@ -760,6 +764,9 @@ body{
         margin: 0;
         padding: 0;
         font-size: 20px;
+    }
+    #header_nav{
+        font-size: 14px;
     }
     
     #header_aside{
@@ -806,13 +813,15 @@ body{
         justify-content: center;
         align-items: center;
         text-align: center;
-        font-size: 14px;
+        font-size: 13px;
         font-weight: bold;
         text-decoration: none;
     }
 
-    .nav_box:hover{
+    #nav div .nav_box:hover{
         border: 2px solid #fff;
+        background: #0c3b79;
+        color: #fff;
     }
     
     #nav div .nav_box i{

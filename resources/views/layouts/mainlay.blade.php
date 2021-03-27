@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="author" content="Baron, Cysteine"/>
+        <meta property="og:image" content="{{ asset('imgs/logo.jpg') }}"/>
         <meta name="description" content="{{ $metadata['description'] }}"/>
         <meta name="keywords" content="{{ $metadata['keywords'] }}"/>
         <title>{{ $metadata['title'] ?? 'SRMS' }}</title>
@@ -17,7 +18,7 @@
     <body>
         <header id="header">
             <div>
-                <img src="./imgs/logo.jpg" alt="LOGO" title="School Logo"/>
+                <img src="{{ asset('imgs/logo.jpg') }}" alt="LOGO" title="School Logo"/>
             </div>
             <h2>WELCOME TO OUR HOMEPAGE</h2>
             <br/>

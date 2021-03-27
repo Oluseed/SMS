@@ -15,7 +15,7 @@ class AnnouncementController extends Controller
         $metadata = [
             'title' => '| TEACHER PORTAL',
             'description' => 'Post and check announcements on your teacher portal at Students Result Management System',
-            'keywords' => 'Teacher, Result checker, Teacher portal, Teacher data, Teacher activities, Announcements',
+            'keywords' => 'SMS, Teacher, Result checker, Teacher portal, Teacher data, Teacher activities, Announcements',
             'body_pics' => 'body2'
         ];
         // Get model_name
@@ -66,7 +66,7 @@ class AnnouncementController extends Controller
         $metadata = [
             'title' => '| TEACHER PORTAL',
             'description' => 'Edit and Post announcements on your teacher portal at Students Result Management System',
-            'keywords' => 'Teacher, Result checker, Teacher portal, Teacher data, Teacher activities, Announcements',
+            'keywords' => 'SMS, Teacher, Result checker, Teacher portal, Teacher data, Teacher activities, Announcements',
             'body_pics' => 'body2'
         ];
         // Get model_name

@@ -21,7 +21,7 @@ class AuthenticatedStudentSessionController extends Controller
         $metadata = [
             'title' => '| STUDENT LOGIN',
             'description' => 'Login to your student portal at Students Result Management System',
-            'keywords' => 'Students, Result checker, Student login, Login page, Student form'
+            'keywords' => 'SMS, Students, Result checker, Student login, Login page, Student form'
         ];
 
         if (!$request->session()->has('schoolData')) {

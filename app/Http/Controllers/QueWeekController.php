@@ -22,7 +22,7 @@ class QueWeekController extends Controller
         $metadata = [
             'title' => '| TEACHER PORTAL',
             'description' => 'Post and check Question of the week on your teacher portal at Students Result Management System',
-            'keywords' => 'Teacher, Result checker, Teacher portal, Teacher data, Teacher activities, Question, Week',
+            'keywords' => 'SMS, Teacher, Result checker, Teacher portal, Teacher data, Teacher activities, Question, Week',
             'body_pics' => 'body2'
         ];
         // Get model_name
@@ -122,7 +122,7 @@ class QueWeekController extends Controller
         $metadata = [
             'title' => '| TEACHER PORTAL',
             'description' => 'View and check Question of the week on your teacher portal at Students Result Management System',
-            'keywords' => 'Teacher, Result checker, Teacher portal, Teacher data, Question, Week, Check, Show, View',
+            'keywords' => 'SMS, Teacher, Result checker, Teacher portal, Teacher data, Question, Week, Check, Show, View',
             'body_pics' => 'body2'
         ];
         // Get model_name
@@ -161,7 +161,7 @@ class QueWeekController extends Controller
         $metadata = [
             'title' => '| TEACHER PORTAL',
             'description' => 'Edit and post Question of the week on your teacher portal at Students Result Management System',
-            'keywords' => 'Teacher, Result checker, Teacher portal, Teacher data, Teacher activities, Question, Week, edit',
+            'keywords' => 'SMS, Teacher, Result checker, Teacher portal, Teacher data, Teacher activities, Question, Week, edit',
             'body_pics' => 'body2'
         ];
         // Get model_name
