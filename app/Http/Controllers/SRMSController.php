@@ -15,38 +15,18 @@ class SRMSController extends Controller
         $metadata = [
             'title' => 'HOME | SRMS',
             'description' => 'Students Result Management System',
-            'keywords' => 'SMS, Students, Result checker'
+            'keywords' => 'Students, Result checker'
         ];
-        $model_name = session('model_name');
 
-        if (Auth::guard($model_name)->check() || $request->session()->exists('schoolData')) {
-
-            Auth::guard($model_name)->logout();
-
-            $request->session()->invalidate();
-
-            $request->session()->regenerateToken();
-        }
-
-        return view('index-test', ['metadata' => $metadata]);
+        return view('index', ['metadata' => $metadata]);
     }
 
     public function show_school(Request $request){
         $metadata = [
             'title' => 'SCHOOL LIST | SRMS',
             'description' => 'Login to or select school portal at Students Result Management System',
-            'keywords' => 'SMS, Students, Result checker, Select School, Choose school, School list'
+            'keywords' => 'Students, Result checker, Select School, Choose school, School list'
         ];
-        $model_name = session('model_name');
-
-        if (Auth::guard($model_name)->check() || $request->session()->exists('schoolData')) {
-
-            Auth::guard($model_name)->logout();
-
-            $request->session()->invalidate();
-
-            $request->session()->regenerateToken();
-        }
         $schools = School::all();
 
         return view('school_login', [
@@ -80,14 +60,14 @@ class SRMSController extends Controller
         // Set $school and School database as session variables
         session(['schoolData' => $school[0]]);
 
-        return redirect()->route('school.portal');
+        return redirect(route('school.portal'));
     }
 
     public function index_schoolHomepage(Request $request){
         $metadata = [
             'title' => '| HOMEPAGE',
             'description' => 'Welcome to your school homepage at Students Result Management System',
-            'keywords' => 'SMS, Students, Result checker, School Homepage, School index Page'
+            'keywords' => 'Students, Result checker, School Homepage, School index Page'
         ];
         if (!$request->session()->has('schoolData')) {
             return redirect('/select_school');

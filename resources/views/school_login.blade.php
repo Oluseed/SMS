@@ -1,5 +1,7 @@
 @extends('layouts.mainlay')
 @section('content')
+<br>
+<br>
             <div class="intro_box">
                 <h4>Welcome to Student Management System.</h4>
                 <p>

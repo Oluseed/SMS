@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="author" content="Baron, Cysteine"/>
-        <meta property="og:image" content="{{ asset('imgs/logo.jpg') }}"/>
         <meta name="description" content="{{ $metadata['description'] }}"/>
         <meta name="keywords" content="{{ $metadata['keywords'] }}"/>
         <title>{{ $school->school_name.' '.$metadata['title'] ?? 'SRMS' }}</title>
@@ -19,7 +18,7 @@
     <body>
         <header id="header">
             <div>
-                <img src="{{ asset('imgs/logo.jpg') }}" alt="LOGO" title="School Logo"/>
+                <img src="./imgs/logo.jpg" alt="LOGO" title="School Logo"/>
             </div>
             <h2>{{ $school->school_name }}</h2>
             <br/>
