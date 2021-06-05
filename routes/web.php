@@ -9,6 +9,7 @@ use App\Http\Controllers\TimetableController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\QueWeekController;
+use App\Http\Controllers\StudentDetailsController;
 use App\Http\Controllers\Auth\AuthenticatedStudentSessionController;
 use App\Http\Controllers\Auth\AuthenticatedTeacherSessionController;
 
@@ -155,6 +156,20 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'TeacherRole'], function ()
 
         Route::delete('/{id}/delete', [QueWeekController::class, 'destroy'])
                     ->name('teacher.queWeek.delete');
+    });
+
+    Route::prefix('student_details')->group(function () {
+        Route::get('/', [StudentDetailsController::class, 'index'])
+                    ->name('teacher.student_details');
+
+        Route::post('/', [StudentDetailsController::class, 'store'])
+                    ->name('teacher.student_details');
+
+        Route::get('/{id}/edit', [StudentDetailsController::class, 'edit']);
+
+        Route::put('/{id}', [StudentDetailsController::class, 'update']);
+
+        Route::delete('/{id}/delete', [StudentDetailsController::class, 'destroy']);
     });
 });
 

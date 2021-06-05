@@ -95,7 +95,7 @@ body{
     height: 100%;
     display: block;
     position: relative;
-    background-image: url("./files/back.jpg");
+    background-image: url("../imgs/back.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -111,7 +111,7 @@ body{
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background-image: url("./files/back2.jpeg");
+    background-image: url("../imgs/back2.jpeg");
 }
 
 @media(min-width: 1500px) {
@@ -708,7 +708,7 @@ section marquee{
     width: 300px;
     height: 120px;
     border-radius: 10px;
-    background-image: url("./files/images\(7\).jpg");
+    background-image: url("../imgs/images\(7\).jpg");
 }
 
 #form_1 label{
@@ -799,7 +799,7 @@ section marquee{
     height: 100%;
     display: block;
     position: relative;
-    background-image: url("./files/back2.jpeg");
+    background-image: url("../imgs/back2.jpeg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -871,10 +871,6 @@ section marquee{
     font-size: 13px;
     font-weight: normal;
     color: #000000;
-}
-
-.content_box span{
-    /*font-family: Monospace;*/
 }
 
 .content_box ul{

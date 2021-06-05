@@ -53,7 +53,7 @@
                         <br/>
                         <span>LESSON FILES</span>
                     </a>
-                    <a href="student_detail.html" class="nav_box right">
+                    <a href="{{ route('teacher.student_details') }}" class="nav_box right">
                         <i class="fas fa-user" aria-hidden="true"></i>
                         <br/>
                         <br/>
