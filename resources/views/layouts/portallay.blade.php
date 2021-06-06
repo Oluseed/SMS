@@ -73,12 +73,38 @@
         </section>
 
         <footer id="footer">
-    		<ul>
-    		    <li>Contact Info </li>
-        		<li>Privacy Policy</li>
-        		<li>About Us </li>
-        		<li>Terms Of Service </li>
-    		</ul>
+            <div class="footer-grid">
+        		<ul>
+        		    <h4>More From Us</h4>
+        		    <li> &#10004; Contact Info </li>
+            		<li> &#10004; Privacy Policy</li>
+            		<li> &#10004; About Us </li>
+            		<li> &#10004; Terms Of Service </li>
+        		</ul>
+        		<ul>
+        		    <h4>Our Head Office</h4>
+        		    <li><i class="fa fa-map-marker-alt"></i> 123 Street, New York, USA</li>
+        		    <li><i class="fa fa-phone-alt"></i> +012 345 67890</li>
+        		    <li><i class="fa fa-envelope"></i> oluseed@gmail.com</li>
+        		</ul>
+            </div>
+    		<div class="footer-socials">
+    		    <a href="#" class="flex-box">
+    		        <i class="fab fa-twitter" ></i>
+    		    </a>
+    		    <a href="#" class="flex-box">
+    		        <i class="fab fa-facebook-f"></i>
+    		    </a>
+    		    <a href="#" class="flex-box yout">
+    		        <i class="fab fa-youtube" ></i>
+    		    </a>
+    		    <a href="#" class="flex-box inst">
+    		        <i class="fab fa-instagram"></i>
+    		    </a>
+    		    <a href="#" class="flex-box likd">
+    		        <i class="fab fa-linkedin-in"></i>
+    		    </a>
+    		</div>
 		    <p>&copy; All rights reserved 2020.</p>
 		</footer>
     </body>

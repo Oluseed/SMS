@@ -8,7 +8,7 @@
                         <label>NAME: </label>
                         <span>{{ $user->name }}</span>
                         <br/>
-                        <label>STUDENT ID: </label>
+                        <label>TEACHER ID: </label>
                         <span class="caps">{{ $user->regno }}</span>
                         <br/>
                         <label>TERM & SESSION: </label>

@@ -9,7 +9,7 @@ use App\Http\Controllers\TimetableController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\QueWeekController;
-use App\Http\Controllers\StudentDetailsController;
+use App\Http\Controllers\StudentDetailController;
 use App\Http\Controllers\Auth\AuthenticatedStudentSessionController;
 use App\Http\Controllers\Auth\AuthenticatedTeacherSessionController;
 
@@ -159,17 +159,20 @@ Route::group(['prefix' => 'teacher', 'middleware' => 'TeacherRole'], function ()
     });
 
     Route::prefix('student_details')->group(function () {
-        Route::get('/', [StudentDetailsController::class, 'index'])
+        Route::get('/', [StudentDetailController::class, 'index'])
                     ->name('teacher.student_details');
 
-        Route::post('/', [StudentDetailsController::class, 'store'])
+        Route::post('/', [StudentDetailController::class, 'store'])
                     ->name('teacher.student_details');
 
-        Route::get('/{id}/edit', [StudentDetailsController::class, 'edit']);
+        Route::get('/check_data/{id}', [StudentDetailController::class, 'show'])
+                    ->name('teacher.student_details.show');
 
-        Route::put('/{id}', [StudentDetailsController::class, 'update']);
+        Route::get('/{id}/edit', [StudentDetailController::class, 'edit']);
 
-        Route::delete('/{id}/delete', [StudentDetailsController::class, 'destroy']);
+        Route::put('/{id}', [StudentDetailController::class, 'update']);
+
+        Route::delete('/{id}/delete', [StudentDetailController::class, 'destroy']);
     });
 });
 

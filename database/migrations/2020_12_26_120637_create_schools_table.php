@@ -21,6 +21,7 @@ class CreateSchoolsTable extends Migration
             $table->binary('school_logo')->nullable();
             $table->string('school_motto')->nullable();
             $table->string('school_email')->nullable();
+            $table->integer('current_year');
             $table->string('school_term');
             $table->string('school_database')->nullable();
             $table->timestamps();

@@ -17,37 +17,69 @@
 
 @section('content')
                 <article class="content_box">
-                    <div class="head">
-                        <i class="fas fa-bullhorn" aria-hidden="true"></i><b> Post Announcements</b>
+                    <div id="nav1">
+                        <span class="tablink current" onclick="openWave(event, 'students-section');">
+							<span><i class="fas fa-user" aria-hidden="true"></i> Students</span>
+						</span>
+						<span class="tablink" onclick="openWave(event, 'new-student');">
+							<span><i class="fas fa-bullhorn" aria-hidden="true"></i> Add New Student</span>
+						</span>
+						<span class="tablink" onclick="openWave(event, 'others');">
+							<span>Others</span>
+						</span>
                     </div>
-                    <form method="POST" action="{{ route('teacher.announcement') }}" class="form_4" autocomplete="off">
-                        @csrf
-                        <label for="class"> Select Class*</label>
-                        <br/>
-                        <select name="class" required>
-                            <option hidden disabled selected value> -- Select The Recipient -- </option>
-                            <option value="jss 1">JSS 1</option>
-                            <option value="jss 2">JSS 2</option>
-                            <option value="jss 3">JSS 3</option>
-                            <option value="sss 1">SSS 1</option>
-                            <option value="sss 2">SSS 2</option>
-                            <option value="sss 3">SSS 3</option>
-                        </select>
-                        <br/>
-                        <br/>
-                        <label for="title">Title*</label>
-                        <br/>
-                        <input type="text" name="title" placeholder="Type your headline here..." required/>
-                        <br/>
-                        <br/>
-                        <label for="Story">Story*</label>
-                        <br/>
-                        <textarea name="story" rows="8" placeholder="Type your message..." required></textarea>
-                        <button class="button3" type="submit">Post Announcement
-  						    <i class="far fa-paper-plane"></i>
-  						</button>
-                    </form>
+                    <section id="students-section" class="content1" style="display:block">
+                        The students list will be placed here.
+                    </section>
+
+                    <section id="new-student" class="content1">
+                        <div class="head">
+                            <i class="fas fa-bullhorn" aria-hidden="true"></i><b> Add A New Student</b>
+                        </div>
+                        <x-auth-validation-errors style="color:#d83636;" :errors="$errors" />
+                        <form method="POST" action="{{ route('teacher.student_details') }}" class="form_4" autocomplete="off">
+                            @csrf
+                            <label for="name"> Student Name*</label>
+                            <br/>
+                            <input type="text" name="name" placeholder="Surname First-name Other-name(s)" required/>
+                            <br/>
+                            <br/>
+                            <label for="email"> Email*</label>
+                            <br/>
+                            <input type="email" name="email" placeholder="Insert email...." required/>
+                            <br/>
+                            <br/>
+                            <label for="gender"> Gender*</label>
+                            <br/>
+                            <div id="radio">
+                                <input type="radio" name="gender" value="male" required>
+                                <span>Male</span>
+                                <input type="radio" name="gender" value="female"required>
+                                <span>Female</span>
+                            </div>
+                            <hr style="background:#0c3b79;padding:1px"/>
+                            <label for="password">Password*</label>
+                            <br/>
+                            <input type="password" name="password" placeholder="Insert Student Account Password Here" required/>
+                            <br/>
+                            <br/>
+                            <label for="password_confirmation">Confirm Password*</label>
+                            <br/>
+                            <input type="password" name="password_confirmation" placeholder="Insert Student Account Password Again" required/>
+                            <br/>
+                            <br/>
+                            <button class="button3" type="submit">Add to Class
+                                <i class="far fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </section>
+
+                    <section id="others" class="content1">
+                        About the videos
+                    </section>
+                    
                 </article>
+                <script src="{{ asset('/../js/srms.js') }}">openWave();</script>
 @endsection
 
 @section('content_queweek')
